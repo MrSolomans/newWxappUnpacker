@@ -1,5 +1,5 @@
 # 说明
-基于 wxappUnpacker 改进的开源项目。
+基于大佬的 wxappUnpacker 改进的开源项目。
 之前安装后环境报错, 可能项目太久没有优化, 针对性优化. 
 # 安装
 npm install

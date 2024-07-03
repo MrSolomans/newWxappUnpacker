@@ -33,7 +33,7 @@ function doWxss(dir, cb, mainDir, nowDir) {
 				else ++importCnt[id];
 			}
 
-            if (typeof data === "number") return addStat(data);  
+            if (typeof data === "number") return addStat(data);
             if (data != undefined) {
                 for (let content of data) if (typeof content === "object" && content[0] == 2) addStat(content[1]);
             }
@@ -165,7 +165,7 @@ function doWxss(dir, cb, mainDir, nowDir) {
             if (node.children) {
                 const removeType = ["webkit", "moz", "ms", "o"];
                 let list = {};
-                node.children.forEach((son, item) => {
+                node.children.each((son, item) => {
                     if (son.type == "Declaration") {
                         if (list[son.property]) {
                             let a = item, b = list[son.property], x = son, y = b.data, ans = null;
@@ -272,7 +272,7 @@ function doWxss(dir, cb, mainDir, nowDir) {
 
             code = code.slice(code.lastIndexOf('var setCssToHead = function(file, _xcInvalid'));
             code = code.replace('__COMMON_STYLESHEETS__', '[]');
-            
+
             if (code.indexOf('_C =') == -1) {
                 code = code.slice(code.lastIndexOf('\nvar _C= ') + 1);
             } else {

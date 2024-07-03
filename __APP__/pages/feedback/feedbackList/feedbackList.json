@@ -1,9 +1,0 @@
-{
-    "navigationBarTitleText": "历史反馈",
-    "navigationBarBackgroundColor": "#FFFFFF",
-    "navigationBarTextStyle": "white",
-    "backgroundColorTop": "#000000",
-    "backgroundColorBottom": "#eeeeee",
-    "backgroundColor": "#ffffff",
-    "onReachBottomDistance": 200
-}

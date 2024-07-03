@@ -1,2 +1,0 @@
-// pages/carManager/pages/querylist/carPolicyDetial/carPolicyDetial.js
-Page({data: {}})

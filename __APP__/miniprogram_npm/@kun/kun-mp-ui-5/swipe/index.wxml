@@ -1,5 +1,0 @@
-<view class="column-indicator {{them}} {{detectBorder}} {{itemShape==='block'?'column-indicator-block':''}}">
-    <view class="column-indicator-item {{swiperIndex===index?'column-indicator-active':''}}" style="{{whiteBg?swiperIndex===index?'background:#fff':'background:rgba(255,255,255,0.4)':''}}" wx:if="{{itemShape==='dot'}}" wx:for="{{swiperItemData}}" wx:key="index"></view>
-    <view class="column-indicator-item-block {{swiperIndex===index?'column-indicator-active':''}}" style="{{whiteBg?swiperIndex===index?'background:#fff;':'':''}}" wx:if="{{itemShape==='block'}}" wx:for="{{swiperItemData}}" wx:key="index"></view>
-</view>
-<k-components-detect></k-components-detect>

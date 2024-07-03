@@ -1,9 +1,0 @@
-<view style="display:flex;position: relative;" wx:if="{{show}}">
-    <view bindtap="handleTap" class="k-tag {{detectBorder}} {{type==='touch'?'k-tag-touch':''}} {{plain?'k-tag-plain-'+size:'k-tag-'+size}} {{disable?'k-tag-disable':''}} {{select?'select k-select-class':'k-class'}} {{plain?'k-tag-plain':''}} {{'k-tag-'+size+'-'+shape}}" style="{{height?'line-height:'+height+'rpx;height:'+height+'rpx;':''}}{{plain?'color:'+fontColor+';border-color:'+borderColor:'background-color:'+bgColor+';color:'+fontColor}}">
-        <view class="{{location==='left'?'content':'content-l'}}" style="{{iconName?'line-height:0':''}}">
-            <slot></slot>
-            <k-icon bindtap="onClose" color="{{iconColor}}" kIconClass="icon-class" name="{{icon}}" size="{{iconSize}}" style="{{location==='left'?'margin-right:0rpx':'margin-left:0rpx'}}" wx:if="{{icon}}"></k-icon>
-        </view>
-    </view>
-</view>
-<k-components-detect></k-components-detect>

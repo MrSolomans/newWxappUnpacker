@@ -1,2 +1,0 @@
-// pages/carManager/pages/excitingActivity/excitingActivityPage.js
-Page({data: {}})

@@ -1,2 +1,0 @@
-// pages/pingan/pages/navigationMap/navigationMap.js
-Page({data: {}})

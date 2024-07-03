@@ -1,2 +1,0 @@
-<image binderror="handleErr" src="{{src||errImg}}" wx:if="{{!isErr}}"></image>
-<image src="{{errImg}}" wx:if="{{isErr}}"></image>

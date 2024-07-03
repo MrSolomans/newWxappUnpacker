@@ -1,6 +1,0 @@
-<view bindtap="closeBox" class="share-tip-box" style="top:{{topHeight}}" wx:if="{{isShowCircle&&!isIos}}">
-    <image class="circle-icon" src="{{circleIcon}}"></image>
-    <image class="arrow-icon" src="{{arrowIcon}}"></image>
-    <text style="flex: 0 0 auto;">点击可分享至朋友圈</text>
-    <image class="close-icon" src="{{closeIcon}}"></image>
-</view>

@@ -1,2 +1,0 @@
-// pages/appConcent/pages/excitingActivity/excitingActivityPage.js
-Page({data: {}})

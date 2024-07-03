@@ -1,5 +1,0 @@
-<view class="spinner" hidden="{{!isShow}}">
-    <view class="boun bounce1"></view>
-    <view class="boun bounce2"></view>
-    <view class="boun bounce3"></view>
-</view>

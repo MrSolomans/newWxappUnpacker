@@ -1,2 +1,0 @@
-<view class="al-bottom-info" style="font-size:{{size}}rpx;">已阅读并同意<text bind:tap="jump" class="al-treaty" data-type="1">《用户协议》</text>和<text bindtap="jump" class="al-treaty" data-type="2">《一账通用户协议》</text>
-</view>

@@ -1,2 +1,0 @@
-// pages/webview/pages/appConcent/carNews/carNewsMore/carNewsMore.js
-Page({data: {}})

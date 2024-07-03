@@ -1,8 +1,0 @@
-<view bindtap="handleTap" class="k-badge k-badge-class {{detectBorder}}">
-    <slot></slot>
-    <block wx:if="{{show}}">
-        <view class="k-badge-dot k-class k-class-self k-self-class" wx:if="{{dot}}"></view>
-        <view class="{{'k-badge-content-'+shape}} k-badge-content k-class k-class-self k-self-class" wx:else>{{finalCount}}</view>
-    </block>
-</view>
-<k-components-detect></k-components-detect>

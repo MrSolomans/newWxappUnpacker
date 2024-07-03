@@ -1,9 +1,0 @@
-<view bindtap="onCloseCollectionTip" class="collection-comp" style="top:{{navigationBarHeight}}" wx:if="{{isShowTip}}">
-    <view class="collection-wrap">
-        <image class="img-left-xing" src="https://pimg1.4008000000.com/app_images/4008000000/m/Software/collection-xing.png"></image>
-        <view class="txt-box">
-            <text class="text">{{textTip}}</text>
-        </view>
-        <image class="img-right-xing" src="https://pimg1.4008000000.com/app_images/4008000000/m/Software/collection-xing.png"></image>
-    </view>
-</view>

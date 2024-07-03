@@ -1,6 +1,0 @@
-<view class="k-icon {{name}} k-icon-class" style="{{nopositon?'':'position:relative;'}}color:{{color}};font-size:{{size}}rpx;">
-    <view class="icon-txt">
-        <slot></slot>
-    </view>
-</view>
-<k-components-detect wx:if="{{!childComponents}}"></k-components-detect>

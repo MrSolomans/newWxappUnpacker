@@ -1,7 +1,0 @@
-<view class="st-con">
-    <view class="st-top-new">
-        <view bind:tap="loadOver" class="st-next">跳过</view>
-        <image bind:error="loadOver" bind:load="loadOver" class="st-bg" src="{{top}}"></image>
-    </view>
-    <image class="st-bottom-new" src="{{bottom}}"></image>
-</view>

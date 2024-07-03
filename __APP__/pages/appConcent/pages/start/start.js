@@ -1,0 +1,2 @@
+// pages/appConcent/pages/start/start.js
+Page({data: {}})

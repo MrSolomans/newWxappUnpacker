@@ -1,0 +1,129 @@
+.teaching_wrap {
+    background: #fff;
+    border-radius: 20rpx;
+    height: 522rpx;
+    margin: 20rpx auto 0;
+    width: 690rpx;
+}
+
+.teaching_scroll_container {
+    margin-left: 30rpx;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.teaching_item {
+    background: #f8fafc;
+    border-radius: 16rpx;
+    display: inline-block;
+    height: 400rpx;
+    margin-right: 10rpx;
+    overflow: hidden;
+    position: relative;
+    width: 570rpx;
+}
+
+.teaching_img {
+    height: 220rpx;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.teaching_text {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    color: #222;
+    display: -webkit-box;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-size: 28rpx;
+    font-weight: 400;
+    left: 22rpx;
+    letter-spacing: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 40rpx;
+    text-align: left;
+    text-overflow: ellipsis;
+    top: 240rpx;
+    white-space: pre-line;
+    word-break: break-all;
+    z-index: 99;
+}
+
+.teaching_bottom {
+    bottom: 30rpx;
+    left: 0;
+    padding: 0 30rpx;
+    position: absolute;
+}
+
+.teaching_author {
+    align-items: center;
+    bottom: 30rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    left: 20rpx;
+    position: absolute;
+}
+
+.teaching_avatar {
+    border-radius: 50%;
+    height: 36rpx;
+    width: 36rpx;
+}
+
+.teaching_author_name {
+    color: #666;
+    font-family: PingFangSC-Medium,PingFang SC;
+    font-weight: 500;
+    margin-left: 12rpx;
+}
+
+.teaching_author_name,.teaching_read {
+    font-size: 24rpx;
+    letter-spacing: 0;
+    line-height: 24rpx;
+}
+
+.teaching_read {
+    bottom: 42rpx;
+    color: #828a93;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-weight: 400;
+    position: absolute;
+    right: 30rpx;
+}
+
+.teaching_top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 30rpx;
+    padding: 28rpx 0;
+}
+
+.teaching_title {
+    color: #222;
+    font-family: PingFangSC-Semibold,PingFang SC;
+    font-size: 32rpx;
+    font-weight: 600;
+    line-height: 32rpx;
+}
+
+.teaching_more {
+    color: #50575d;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-size: 28rpx;
+    font-weight: 400;
+    line-height: 28rpx;
+    margin-top: 2rpx;
+}
+
+.teaching_more_img {
+    height: 20rpx;
+    margin-left: 8rpx;
+    width: 12rpx;
+}

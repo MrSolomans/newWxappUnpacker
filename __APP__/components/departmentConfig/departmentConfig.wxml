@@ -1,0 +1,35 @@
+<block wx:if="{{contentData.length>0}}">
+    <view class="exposure-con" wx:if="{{type==='41'}}">
+        <view bindtap="goNextStep" class="exposure-element activity_item" data-exposure="{{item.boomPoint}}" data-point="{{item.clickPoint}}" data-text="{{item.text}}" data-url="{{item.url}}" wx:if="{{index<2}}" wx:for="{{contentData}}" wx:key="index">
+            <image class="activity_item_image" src="{{item.icon}}"></image>
+        </view>
+    </view>
+    <view wx:if="{{type==='43'}}">
+        <swiper autoplay="true" bindchange="exposureSwiper" circular="true" class="action_swiper_item" duration="1000" indicatorDots="true" nterval="3000">
+            <swiper-item bindtap="goNextStep" class="action_swiper_item" data-point="{{item.clickPoint}}" data-serialNumber="{{index}}" data-text="{{item.text}}" data-url="{{item.url}}" data-witchOne="{{0}}" wx:for="{{contentData}}" wx:key="index">
+                <image class="action_swiper_img" src="{{item.icon}}"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view wx:if="{{type==='45'}}">
+        <view class="action_list_body exposure-con">
+            <view class="exposure-element action_list_item" data-exposure="{{item.boomPoint}}" data-text="{{item.name}}" wx:for="{{contentData}}" wx:key="index">
+                <view class="action_list_item_img">
+                    <image class="action_list_item_image" src="{{item.icon}}"></image>
+                </view>
+                <view class="action_list_item_content">
+                    <view class="list_content_text">
+                        <view class="list_text_title">{{item.name}}</view>
+                        <view class="list_text_dec">{{item.moreSubTitle}}</view>
+                    </view>
+                    <view class="list_content_btm">
+                        <view></view>
+                        <view bindtap="goNextStep" data-point="{{item.clickPoint}}" data-serialNumber="{{index}}" data-text="{{item.text}}" data-url="{{item.url}}" data-witchOne="{{3}}">
+                            <k-button kButtonClass="list_content_but">立即参与</k-button>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</block>

@@ -1,0 +1,13 @@
+{
+    "component": true,
+    "usingComponents": {
+        "login-dual-authentication": "/components/LoginDualAuthentication/LoginDualAuthentication",
+        "custom-navbar": "/components/customNavbar/customNavbar",
+        "guide-follow": "/components/guideFollow/guideFollow",
+        "bottom-bubble": "/components/bottomBubble/bottomBubble",
+        "new-authorize": "/components/authorizeAndVerify/authorizeAndVerify",
+        "share-circles": "/components/shareCircles/shareCircles",
+        "k-button": "/miniprogram_npm/@kun/kun-mp-ui-5/button/index",
+        "k-toast": "/miniprogram_npm/@kun/kun-mp-ui-5/toast/index"
+    }
+}

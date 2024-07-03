@@ -1,0 +1,7 @@
+{
+    "publicComponents": {
+        "cell": "components/groupCell/groupCell"
+    },
+    "main": "index.js",
+    "pages": {}
+}

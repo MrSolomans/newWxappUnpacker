@@ -1,0 +1,82 @@
+var startX = 0;
+var startY = 0;
+var lastLeft = 0;
+var lastTop = 0;
+var minL = 0;
+var maxL = 0;
+var minT = 0;
+var maxT = 0;
+var isInit = false;
+
+function touchstart(event, ins) {
+    if (!isInit) {
+        var dataset = event.currentTarget.dataset;
+        console.log(JSON.stringify(dataset));
+        var rangeWidth = +dataset.width;
+        var rangeHeight = +dataset.height;
+        var elemW = +dataset.elemW;
+        var elemH = +dataset.elemH;
+        var proportion = rangeWidth / 375;
+        minL = +dataset.minL || 0;
+        maxL = rangeWidth - elemW - minL;
+        minL *= proportion;
+        minT = +dataset.minT || 0;
+        maxT = rangeHeight - elemH;
+        minT *= proportion;
+        lastLeft = +dataset.lastLeft;
+        lastTop = +dataset.lastTop;
+        isInit = true
+    };
+    var touch = event.touches[(0)] || event.changedTouches[(0)];
+    startX = touch.pageX;
+    startY = touch.pageY;
+    ins.selectComponent('.movable').setStyle(({
+        left: lastLeft + 'px',
+        top: lastTop + 'px',
+    }))
+};
+
+function touchmove(event, ins) {
+    var touch = event.touches[(0)] || event.changedTouches[(0)];
+    var pageX = touch.pageX;
+    var pageY = touch.pageY;
+    var left = pageX - startX + lastLeft;
+    var top = pageY - startY + lastTop;
+    left < minL && (left = minL);
+    top < minT && (top = minT);
+    left > maxL && (left = maxL);
+    top > maxT && (top = maxT);
+    startX = pageX;
+    startY = pageY;
+    lastLeft = left;
+    lastTop = top;
+    ins.selectComponent('.movable').setStyle(({
+        left: left + 'px',
+        top: top + 'px',
+    }));
+    return (false)
+};
+
+function touchend(event, ins) {
+    console.log('maxL', maxL);
+    var finalLeft = lastLeft > maxL / 2 ? maxL : minL;
+    ins.selectComponent('.movable').setStyle(({
+        left: finalLeft + 'px',
+        top: lastTop + 'px',
+        transition: 'left 400ms',
+    }));
+    lastLeft = finalLeft
+};
+
+function tap(event, ins) {
+    ins.selectComponent('.movable').setStyle(({
+        left: lastLeft + 'px',
+        top: lastTop + 'px',
+    }))
+};
+module.exports = ({
+    tap: tap,
+    touchstart: touchstart,
+    touchmove: touchmove,
+    touchend: touchend,
+});

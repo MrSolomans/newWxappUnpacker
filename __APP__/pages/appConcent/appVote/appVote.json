@@ -1,0 +1,7 @@
+{
+    "onReachBottomDistance": 400,
+    "navigationStyle": "custom",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColorTop": "#fff",
+    "backgroundColor": "#fff"
+}

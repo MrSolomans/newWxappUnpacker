@@ -1,0 +1,42 @@
+var e, D, F = [ "/pages/pingan/epcis/cpc/wxSdkPay?callUpType=SIGN&paramMap=%7B%22timeStamp%22%3A%221711337982%22%2C%22callUpType%22%3A%22PLUGIN%22%2C%22amount%22%3A%221%22%2C%22package%22%3A%22prepay_id%3D202403251139428063134853710%22%2C%22packageValue%22%3A%22prepay_id%3D202403251139428063134853710%22%2C%22institutionId%22%3A%22210212%22%2C%22appId%22%3A%22wxf6e85f0b41014cda%22%2C%22sign%22%3A%22CiYGUebwHq4xSUnB%2B7J6zb%2FWW1%2F7tVBBNwZtoV%2FmX5lhhNTy9Xod2gtMb0SyaRsFbR5ih%2FeNWOwZSLQbFbZZ%2FaJN3GBx0RhYVVtYSUXq%2BfQ4mM0Zlm8EuASKRyJUXAnIWLgA7NKqPlf%2BQ5bZu6S94d3Atm%2B8DrgdK7BMIv1UvMfYO%2FjYx99KkvVmTfbNdZabfjoiCz5dKmcExImsNxj%2F3g62Uvo13cFZHx%2B9lFj8VI6tdiHswDPB1h54ctwngIovJ82pr%2BH6pqVPLJjCgnBXoX4rmn6T9nkK%2FqEM0Yyya7SNEsiFXgmN0xE%2B1vqS%2BjHPl7gHv%2FwRwJUIyhA4BB5hhw%3D%3D%22%2C%22signType%22%3A%22RSA%22%2C%22txsn%22%3A%222403251139427287001922522%22%2C%22sourceTxType%22%3A%222101%22%2C%22nonceStr%22%3A%22202403251139428066936492115%22%7D&cpcBackUrl=", "prod", "dev", "车险投保", "支付改版", "群活码组合" ];
+
+e = F, D = 304, function(D) {
+    for (;--D; ) e.push(e.shift());
+}(++D);
+
+var C = function(e, D) {
+    return F[e -= 0];
+};
+
+Object.defineProperty(exports, "__esModule", {
+    value: !0
+}), exports.default = function(e) {
+    var D = 1 === e.globalData.environment ? C("0x3") : C("0x4");
+    return {
+        env: D,
+        data: A[D]
+    };
+};
+
+var A = {
+    dev: [ {
+        title: C("0x5"),
+        path: "/pages/webview/webview?serviceType=3&MN=78DF208CB16D2D64E06687080AE1A4AF&smallappUrl=weixin%3A%2F%2Fdl%2Fbusiness%2F%3Ft%3DoqIoFd3Ub8r&pageType=gotopay&params=53D9D9C034063EBF087EB74BD8F9A989FE5A4C9B6DD1DE98D49829933786895BADE4F00310323F675B8D9FDE425CE5240C387FF7EFE2A19CC99D19C300156FC343886CC1B0088075A199634CB072835473D370022CCC4A4C4BB49EDDF60E45E4E4301636F1CCFF55779B9A1987E87FD81CC6D6CEC18731D111E37E5E373D42516F8BC91A5C4717967E39A09CDD3199F358B241687FA1957116EA3420023B78FEE820D3B21CBFF9DC2B242E47DA4760D8F352B0741DD44830AC69F2DE37A5BB3DC5DF02A4F9CD0E41A80879012998A2D3222E8D99F9683279ED0EA8DF29FBC6AA170066DED8FF09AFCC3E98D8F0671BA8C1E487D849AFA74E2AB6870DADC3E067&mediaSource=CX-JG-PTX-ADXX-HBSX-HBSAPP-1000$XCX_DuanXin&isPolicyQuotation=1"
+    }, {
+        title: "摩托车投保",
+        path: "/pages/webview/insure?pageType=insureMoto"
+    }, {
+        title: C("0x1"),
+        path: "/pages/activity/groupCombination/groupCombination?id=42"
+    }, {
+        title: "微保",
+        path: "/pages/rightMore/memberLevel/weiSure?serviceKey=D50279497959D9DECDB001070FCE83B7A7995CF766774EED1E9717FCA0982A402B3DD4C0963C5CF29D30FE0A429B08CA29220D633F7A75F8BEE5EA798D9DC749A15F32A6D623ED4867100F300443013143A3A05A268194C23FAC5D2AE01BB72E5D48980512F1E86EF91520B51B1EAC1676600370D236D628DDD0C19E41B88CAF"
+    }, {
+        title: C("0x0"),
+        path: C("0x2")
+    }, {
+        title: "统一登录入口",
+        path: "/pages/login/loginOld"
+    } ],
+    prod: []
+};

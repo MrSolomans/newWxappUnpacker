@@ -1,0 +1,2 @@
+// pages/privacyAuthorization/pages/rightMore/userInfo/aboutUs/aboutUs.js
+Page({data: {}})

@@ -1,0 +1,33 @@
+.circle {
+    align-items: center;
+    border-radius: 50%;
+    bottom: 380rpx;
+    display: flex;
+    flex-direction: column;
+    height: 164rpx;
+    justify-items: center;
+    position: fixed;
+    right: 64rpx;
+    text-align: center;
+    width: 164rpx;
+    z-index: 99999;
+}
+
+.detect-before {
+    background: url(https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/kun/detect/detect-bg-default@3x.png);
+    background-size: 100%;
+    color: #222;
+}
+
+.detect-after {
+    background: url(https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/kun/detect/detect-bg-select@3x.png);
+    background-size: 100%;
+    color: #ff6300;
+}
+
+.components-num {
+    font-family: PingFangSC-Medium;
+    font-size: 18rpx;
+    padding-top: 98rpx;
+    text-align: center;
+}

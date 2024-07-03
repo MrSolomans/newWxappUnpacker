@@ -1,0 +1,38 @@
+.riskWarp {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.riskMask {
+    background: rgba(0,0,0,.6);
+    border-radius: 8rpx;
+    box-sizing: border-box;
+    min-height: 180rpx;
+    min-width: 180rpx;
+    padding: 30rpx;
+    text-align: center;
+}
+
+.maskIcon {
+    display: block;
+    height: 74rpx;
+    margin: 0 auto 21rpx;
+    width: 74rpx;
+}
+
+.maskTxt {
+    color: #fff;
+    display: block;
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    letter-spacing: 0;
+    line-height: 36rpx;
+    text-align: center;
+}

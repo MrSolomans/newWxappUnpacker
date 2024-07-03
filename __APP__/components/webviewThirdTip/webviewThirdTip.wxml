@@ -1,0 +1,4 @@
+<view class="mid-third-tips" wx:if="{{isShowPage}}">
+    <view class="pic"></view>
+    <view class="text">{{thirdPageTips}}</view>
+</view>

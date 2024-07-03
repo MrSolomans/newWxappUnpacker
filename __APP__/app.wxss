@@ -1,0 +1,316 @@
+page {
+    background: #eee;
+    box-sizing: border-box;
+    color: #222;
+    font-size: 24rpx;
+    height: 100vh;
+    letter-spacing: 2rpx;
+    margin: 0;
+    padding: 0;
+    word-spacing: 8rpx;
+}
+
+.banner_img {
+    height: 200rpx;
+    width: 100%;
+}
+
+.ul {
+    height: auto;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.li {
+    background-size: 13rpx 25rpx;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 20rpx;
+}
+
+.content {
+    height: auto;
+    overflow: hidden;
+    width: 100%;
+}
+
+.container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 1rpx;
+    width: 750rpx;
+}
+
+.container,.mask {
+    box-sizing: border-box;
+}
+
+.mask {
+    background: rgba(0,0,0,.7);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+.img {
+    display: block;
+    height: 52rpx;
+    margin: auto auto 6rpx;
+    width: 52rpx;
+}
+
+.cm-common__container {
+    background: transparent;
+    border-radius: 0;
+    display: block;
+    height: auto;
+    line-height: auto;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.cm-clear::after,.cm-clear::before {
+    clear: both;
+    content: "";
+    display: table;
+}
+
+.cm-scroll {
+    overflow-y: auto;
+}
+
+.cm-only-touch,.cm-scroll {
+    -webkit-overflow-scrolling: touch;
+}
+
+.cm-animate__move {
+    animation: common_move .3s;
+}
+
+.cm-animate__move2 {
+    animation: common_move2 .3s;
+}
+
+.cm-animate__move3 {
+    animation: common_move3 .3s;
+}
+
+.cm-formid_btn,.cm-formid_from {
+    background: none;
+    border: none;
+    border-radius: 0;
+    display: block;
+    height: auto;
+    line-height: normal;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    position: static;
+    width: auto;
+}
+
+.cm-formid_btn::after,.cm-formid_from::after {
+    display: none;
+}
+
+@-webkit-keyframes common_move {
+    0% {
+        transform: translate3d(-50%,5%,0) scale(.95);
+    }
+
+    100% {
+        transform: translate3d(-50%,0,0) scale(1);
+    }
+}
+
+@keyframes common_move {
+    0% {
+        transform: translate3d(-50%,5%,0) scale(.95);
+    }
+
+    100% {
+        transform: translate3d(-50%,0,0) scale(1);
+    }
+}
+
+@-webkit-keyframes common_move2 {
+    0% {
+        transform: translate3d(0,5%,0) scale(.95);
+    }
+
+    100% {
+        transform: translate3d(0,0,0) scale(1);
+    }
+}
+
+@keyframes common_move2 {
+    0% {
+        transform: translate3d(0,5%,0) scale(.95);
+    }
+
+    100% {
+        transform: translate3d(0,0,0) scale(1);
+    }
+}
+
+@-webkit-keyframes common_move3 {
+    0% {
+        transform: translate3d(-50%,-45%,0) scale(.95);
+    }
+
+    100% {
+        transform: translate3d(-50%,-50%,0) scale(1);
+    }
+}
+
+@keyframes common_move3 {
+    0% {
+        transform: translate3d(-50%,-45%,0) scale(.95);
+    }
+
+    100% {
+        transform: translate3d(-50%,-50%,0) scale(1);
+    }
+}
+
+button::after {
+    display: none;
+}
+
+.cm-mask {
+    z-index: 100;
+}
+
+.cm-mask,.cm-mask_shadow {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.cm-mask_shadow {
+    background-color: rgba(0,0,0,.85);
+}
+
+.cm-mask_body {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.cm-break_word {
+    word-wrap: break-word;
+}
+
+.cm-text_center {
+    text-align: center;
+}
+
+.cm-red_point {
+    overflow: visible;
+    position: relative;
+}
+
+.cm-red_point__enhanced,text.cm-red_point__enhanced {
+    min-width: 100rpx;
+    overflow: visible!important;
+    position: relative!important;
+    width: auto;
+}
+
+.cm-red_point::after,.cm-red_point__enhanced::after {
+    background: #ff554c;
+    border: none;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 16rpx;
+    left: auto;
+    position: absolute;
+    right: -16rpx;
+    top: 0;
+    width: 16rpx;
+}
+
+.cm-red_point__enhanced.cm-text_point::after {
+    right: 20rpx;
+    top: 20rpx;
+}
+
+.cm-common_close {
+    background: url(https://pimg1.4008000000.com/app_images/4008000000/m/Software/sweepstakes/close.png)no-repeat 50%;
+    background-size: 100% 100%;
+}
+
+.custom-ellipsis-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.custom-ellipsis-title.cet-normal {
+    width: 420rpx;
+}
+
+.custom-ellipsis-title.cet-small {
+    width: 300rpx;
+}
+
+.custom-ellipsis-title.cet-big {
+    width: 470rpx;
+}
+
+.border-1 {
+    position: relative;
+}
+
+.border-1:after {
+    border-top: 1rpx solid #e5e5e5;
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    transform: scaleY(.5);
+    width: 100%;
+}
+
+::-webkit-scrollbar {
+    background: transparent;
+    color: transparent;
+    display: none;
+    height: 0;
+    width: 0;
+}
+
+.semibold {
+    font-family: PingFangSC-Semibold;
+    font-weight: 600;
+}
+
+.cm-right-arrows {
+    background: url(https://pimg1.4008000000.com/app_images/4008000000/m/Software/insurance/right_arrows.png)no-repeat 50%;
+    background-size: 12rpx 20rpx;
+    display: inline-flex;
+    height: 20rpx;
+    width: 12rpx;
+}
+
+.new-tabbar-bottom {
+    background: linear-gradient(180deg,transparent 50%,rgba(0,0,0,.05));
+    bottom: 0;
+    height: 40rpx;
+    left: 0;
+    position: fixed;
+    right: 0;
+    z-index: 9999;
+}

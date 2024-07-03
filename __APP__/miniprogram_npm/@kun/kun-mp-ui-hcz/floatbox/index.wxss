@@ -1,0 +1,48 @@
+.float-box-wrap {
+    align-items: center;
+    bottom: 250rpx;
+    color: #fff;
+    display: flex;
+    height: 150rpx;
+    justify-content: center;
+    opacity: 0;
+    position: fixed;
+    right: 150rpx;
+    width: 150rpx;
+    z-index: 9999;
+}
+
+.float-box-wrap.hide {
+    animation: gradualHide .5s;
+}
+
+@-webkit-keyframes gradualHide {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes gradualHide {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.close-btn {
+    position: absolute;
+    right: 0rpx;
+    top: 0rpx;
+}
+
+.banner-img {
+    height: 100%;
+    width: 100%;
+}

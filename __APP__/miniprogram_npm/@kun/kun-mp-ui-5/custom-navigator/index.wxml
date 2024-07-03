@@ -1,0 +1,69 @@
+<view class="cm-con {{them}}" style="position:{{isAbsolute?'absolute':'static'}};background:{{otherConColor?otherConColor:bgColor}};padding-top:{{needBarHeight?statusBarHeight:0}}px;height:{{needBarHeight?43:0}}px;transition: {{transitionType}};" wx:if="{{navigationBarHeight!=='0px'}}">
+    <view class="customNavBarWrap {{detectBorder}}" style="background:url({{navigationBarHave?topBgImg:''}}) no-repeat;background-size:100%;background:{{navigationBarHave?'':otherConColor?otherConColor:bgColor}};transition:{{!navigationBarHave?transitionType:''}};padding-top:{{navigationBarHave?statusBarHeight:0}}px">
+        <view style="height:{{statusBarHeight}}px;background: {{bgColor}};transition: {{transitionType}};" wx:if="{{!navigationBarHave}}"></view>
+        <view class="customNavBarBox {{navType==='search'?'searchWidth':''}}" style="transition: {{transitionType}};">
+            <view class="leftBtnArea {{iconColor=='black'?'black':'white'}} {{!back&&home?'singleHome':back&&!home?'singleBack':''}} {{bgColor!=='#fff'&&bgColor!=='#ffffff'&&!isNeedBlackBg?'needBlackBg':''}} {{isAndroid?'android':''}}" style="height:{{customHeight}}px;width:{{back&&home?customWidth*2:onlyOneWidth}}px" wx:if="{{!searchFocus&&(back||home)}}">
+                <view bind:tap="onBackTap" class="view" style="width:{{customWidth}}px" wx:if="{{back}}">
+                    <view class="iconImg image back_{{iconColor}}"></view>
+                    <button appParameter="{{returnAppUrl}}" bind:error="onGoAppFail" bind:launchapp="onGoAppSuccess" class="cm-formid_btn go-app" hoverClass="none" openType="launchApp" wx:if="{{goApp}}"></button>
+                </view>
+                <view bind:tap="onBackHomeTap" class="view" style="width:{{customWidth}}px" wx:if="{{home}}">
+                    <view class="iconImg image home_{{iconColor}}"></view>
+                </view>
+            </view>
+            <block wx:if="{{navType==='default'}}">
+                <view class="title-box" wx:if="{{titleType==='string'}}">
+                    <view bind:tap="changeTitleScreening" class="customTitle" style="color:{{textColor}}"> {{titleText}} <image class="title-arrow" src="{{titleArrow}}" style="transform:{{screeningShow?'rotate(180deg)':'rotate(0deg)'}}" wx:if="{{titleScreening.content}}"></image>
+                    </view>
+                    <view class="subTitle" wx:if="{{subTitle}}"> {{subTitle}} </view>
+                </view>
+                <view class="title-arr-box" style="max-width: {{home&&back?'355rpx':!home&&!back?'540rpx':'470rpx'}}" wx:else>
+                    <view bind:tap="changeTitle" class="arrTitle" data-index="{{index}}" wx:for="{{titleText}}" wx:key="index"> {{item}} <view class="title-down-line" wx:if="{{titleIndex===index}}"></view>
+                    </view>
+                </view>
+            </block>
+            <block wx:elif="{{navType==='search'}}">
+                <view class="region" wx:if="{{region.type==='out'&&region.show&&!searchFocus}}">
+                    <picker bindchange="changeRegion" customItem="{{customItem}}" mode="region" value="{{regionList}}">
+                        <view class="region-picker">
+                            <view class="region-picker-item">{{regionCity.value}}</view>
+                            <image class="region-arrow" src="{{regionArrow}}"></image>
+                        </view>
+                    </picker>
+                    <view class="region-weather" wx:if="{{needWeather}}"> {{weatherList.name}} {{weatherList.temperature}}℃ </view>
+                </view>
+                <view catch:tap="bindFocus" class="customSearch {{searchCenter&&home&&back?'searchCenter':''}}" style="position:absolute;left:{{searchLeft}}px;top: {{searchTop}}px; line-height:{{searchHeight}}px; height: {{searchHeight}}px;width:{{searchRight}}px;">
+                    <view class="in-region" wx:if="{{region.type==='in'&&region.show&&!searchFocus}}">
+                        <picker bindchange="changeRegion" customItem="{{customItem}}" mode="region" value="{{regionList}}">
+                            <view class="region-picker">
+                                <view class="region-picker-item">{{regionCity.value}}</view>
+                                <image class="region-arrow" src="{{regionArrow}}"></image>
+                            </view>
+                        </picker>
+                    </view>
+                    <k-icon class="icon-search" color="#CCCCCC" name="icon-a-cx-search-lookup2x" size="40"></k-icon>
+                    <swiper autoplay="true" circular="true" class="swiper_container" interval="2000" style="left:{{swiperLeft}}px;" vertical="true" wx:if="{{!searchFocus&&searchHotWordList.length>0}}">
+                        <swiper-item wx:for="{{searchHotWordList}}" wx:key="index">
+                            <view class="swiper_item"> {{item.hotWord}} </view>
+                        </swiper-item>
+                    </swiper>
+                    <input bindconfirm="bindConfirm" bindfocus="bindFocus" bindinput="bindInput" class="cm-search" confirmType="search" disabled="disabled" focus="{{searchFocus}}" name="search" placeholder="{{defaultSearchTxt}}" type="text" value="{{searchValue}}" wx:else></input>
+                    <k-icon catchtap="clearValue" class="icon-clear" color="#c3c3c3" iconType="close" size="34" wx:if="{{searchFocus&&searchValue}}"></k-icon>
+                </view>
+                <view catchtap="searchCancel" class="cancel-search" wx:if="{{searchFocus}}">取消</view>
+            </block>
+        </view>
+    </view>
+    <view class="title-window">
+        <view catch:tap="changeTitleScreening" class="title-window-mask" wx:if="{{screeningShow}}"></view>
+        <view class="title-screening" style="top: {{screeningShow?'104rpx':'-314rpx'}}">
+            <view class="title-screening-box">
+                <view bind:tap="selectScreening" class="title-screening-item {{screeningIndex===index||item.checked?'screening-selected':''}}" data-index="{{index}}" data-item="{{item}}" wx:for="{{screeningList}}" wx:key="index"> {{item.name}} </view>
+            </view>
+            <view class="screening-btn-box" wx:if="{{titleScreening.type==='select'}}">
+                <view catch:tap="changeTitleScreening" class="btn-left btn">{{titleScreening.btnLeftText||'取消'}}</view>
+                <view catch:tap="screeningConfirm" class="btn-right btn">{{titleScreening.btnRightText||'确认'}}</view>
+            </view>
+        </view>
+    </view>
+</view>

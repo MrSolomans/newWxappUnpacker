@@ -1,0 +1,90 @@
+.fpopup {
+    border-radius: 200rpx;
+    box-sizing: border-box;
+    color: #fff;
+    flex-direction: column;
+    font-size: 24rpx;
+    height: 100rpx;
+    left: 610rpx;
+    position: fixed;
+    top: 1014rpx;
+    width: 100rpx;
+}
+
+.fpopup,.fpopup>.item {
+    align-items: center;
+    display: flex;
+}
+
+.fpopup>.item {
+    flex: 1;
+    line-height: 1;
+    text-align: center;
+}
+
+.fpopup>.item .image {
+    display: block;
+    height: 100rpx;
+    width: 100rpx;
+}
+
+.fpopup>.item .button {
+    background: transparent;
+    color: #fff;
+    display: block;
+    font-size: 26rpx;
+    line-height: 1;
+    padding: 0;
+}
+
+.movepop {
+    align-items: center;
+    background: #fefffe;
+    border-radius: 8rpx;
+    box-shadow: 0 0 10rpx 0 rgba(0,0,0,.1);
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    font-size: 20rpx;
+    height: 230rpx;
+    left: 642rpx;
+    letter-spacing: 0;
+    line-height: 20rpx;
+    position: fixed;
+    top: 1004rpx;
+    width: 78rpx;
+}
+
+.movepop>.item {
+    border-bottom: 1rpx solid #e5e5e5;
+    height: 70rpx;
+    padding: 20rpx 0 24rpx;
+    text-align: center;
+}
+
+.movepop>.item .text {
+    color: #222;
+    font-size: 20rpx;
+    letter-spacing: 0;
+    line-height: 20rpx;
+}
+
+.itemShare>.image,.movepop>.item .image {
+    display: block;
+    height: 40rpx;
+    margin-bottom: 6rpx;
+    width: 40rpx;
+}
+
+.movepop>.itemShare {
+    padding-top: 24rpx;
+}
+
+.movepop>.item .button {
+    background: transparent;
+    color: #fff;
+    display: block;
+    font-size: 26rpx;
+    line-height: 1;
+    padding: 0;
+}

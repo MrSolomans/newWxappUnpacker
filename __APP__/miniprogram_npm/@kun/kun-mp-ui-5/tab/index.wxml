@@ -1,0 +1,67 @@
+<view class="nav-content k-tab-class {{them}} {{detectBorder}}">
+    <block wx:if="{{type!==2}}">
+        <view style="position: relative;">
+            <scroll-view scrollX class="nav-scroll" style="{{moreDetail?'padding-right:100rpx;width:88vw;':''}}background:{{navTabBgColor}}" wx:if="{{tabList&&tabList.length>0}}">
+                <view bind:tap="onCheckTabs" class="nav-scroll-item" data-index="{{index}}" data-tab="{{tab}}" style="{{tabList.length>5||moreDetail?'margin: 0rpx 24rpx;padding-left:8rpx;padding-right:50rpx':'width:'+100/tabList.length+'%'}}" wx:for="{{tabList}}" wx:for-item="tab" wx:key="index">
+                    <k-badge dot="true" kBadgeClass="badge-class" show="{{tab.showBadge}}"></k-badge>
+                    <view class="nav-scrol-btn {{index===checkTabIndex&&'tab-active'}} {{tabList.length>5?'lineCenter':''}}">
+                        <text style="color:{{tabItemColor}}">{{tab.value}}</text>
+                        <view class="newLine k-tab-line" wx:if="{{(tabList.length>5||moreDetail)&&index===checkTabIndex}}"></view>
+                    </view>
+                </view>
+                <view class="nav-scroll-line" style="width: {{100/(tabList.length>5?5:tabList.length)}}%;left:{{100/(tabList.length>5?5:tabList.length)*checkTabIndex}}%" wx:if="{{tabList.length<=5}}">
+                    <view class="line k-tab-line"></view>
+                </view>
+            </scroll-view>
+            <view class="mask" wx:if="{{tabList.length>5}}"></view>
+            <view bind:tap="onClickMoreDetail" class="moreDetail" wx:if="{{moreDetail}}">
+                <image class="icon_edit" mode="widthFix" src="{{cdnHost}}icon_edit.png"></image>
+            </view>
+        </view>
+        <view style="position: relative;">
+            <scroll-view scrollX class="nav-tag-scrol" style="{{tagMoreDetail?'width:88vw;':''}}height: 56rpx;padding: 16rpx 0;background:{{navTagBgColor}}" wx:if="{{tabList&&tabList[checkTabIndex]&&tabList[checkTabIndex].tagList&&tabList[checkTabIndex].tagList.length>0}}">
+                <view class="nav-tag-box">
+                    <view bind:tap="onCheckTags" class="nav-scrol-tag {{index===checkTagIndex&&'tag-active'}}" data-index="{{index}}" data-parent-index="{{checkTabIndex}}" data-tag="{{tag}}" wx:for="{{tabList[checkTabIndex].tagList}}" wx:for-item="tag" wx:key="tagIndex">{{tag}}</view>
+                </view>
+            </scroll-view>
+            <view bind:tap="onClickTagMoreDetail" class="moreDetail" wx:if="{{tagMoreDetail}}">
+                <image class="icon_showDetail" mode="widthFix" src="{{cdnHost}}icon_showDetail.png"></image>
+                <view class="left-border"></view>
+            </view>
+        </view>
+    </block>
+    <block wx:if="{{type===2}}">
+        <view scrollX class="nav-section" style="background:{{navTabBgColor}}" wx:if="{{tabList&&tabList.length>0}}">
+            <view class="nav-inside">
+                <view bind:tap="onCheckTabs" class="nav-section-item" data-index="{{index}}" data-tab="{{tab}}" style="width:{{100/tabList.length}}%" wx:for="{{tabList}}" wx:for-item="tab" wx:key="index">
+                    <view class="nav-section-btn {{index===checkTabIndex&&'section-tag-active'}}">
+                        <text>{{tab.tabTitle}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <scroll-view scrollX class="nav-scroll" style="background:{{navTermBgColor}}" wx:if="{{tabList&&tabList[checkTabIndex]&&tabList[checkTabIndex].screenList&&tabList[checkTabIndex].screenList.length>0||screenList&&screenList.length>0}}">
+        <view bind:tap="onCheckTerm" class="nav-scroll-term" data-index="{{index}}" data-parent-index="{{checkTabIndex||''}}" data-term="{{term}}" data-type="{{term.type}}" style="width: {{100/(tabList&&tabList[checkTabIndex]&&tabList[checkTabIndex].screenList?tabList[checkTabIndex].screenList.length>5?5:tabList[checkTabIndex].screenList.length:screenList.length>5?5:screenList.length)}}%" wx:for="{{tabList&&tabList[checkTabIndex]&&tabList[checkTabIndex].screenList?tabList[checkTabIndex].screenList:screenList}}" wx:for-item="term" wx:key="index">
+            <view class="nav-scrol-term-msg {{index===checkTermIndex&&'term-active'}}" wx:if="{{term.type==='1'}}">
+                <text class="{{width?'show-Clamp':''}}" style="{{width?'width:'+width+'rpx':''}}">{{term.termMsg}}</text>
+                <view class="arrow"></view>
+            </view>
+            <view class="nav-scrol-term-msg {{index===checkTermIndex&&'term-active'}}" wx:elif="{{term.type==='2'}}">
+                <text class="{{width?'show-Clamp':''}}" style="{{width?'width:'+width+'rpx':''}}">{{term.termMsg}}</text>
+                <view class="arrow-box">
+                    <view class="arrow-top {{term.checkArrow==='2'&&'arrow-active-up'}}"></view>
+                    <view class="arrow-bottom {{term.checkArrow==='1'&&'arrow-active-down'}}"></view>
+                </view>
+            </view>
+            <view class="nav-scrol-term-msg {{index===checkTermIndex&&'term-active'}}" wx:elif="{{term.icon_normal&&term.icon_select&&term.type==='3'}}">
+                <text class="{{width?'show-Clamp':''}}" style="{{width?'width:'+width+'rpx':''}}">{{term.termMsg}}</text>
+                <image class="screenArrow2" mode="widthFix" src="{{index===checkTermIndex?term.icon_select:term.icon_normal}}"></image>
+            </view>
+            <view class="nav-scrol-term-msg {{index===checkTermIndex&&'term-active'}}" wx:else>
+                <text class="{{width?'show-Clamp':''}}" style="{{width?'width:'+width+'rpx':''}}">{{term.termMsg}}</text>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<k-components-detect></k-components-detect>

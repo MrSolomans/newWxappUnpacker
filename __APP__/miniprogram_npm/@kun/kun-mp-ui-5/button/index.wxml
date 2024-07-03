@@ -1,0 +1,12 @@
+<label bind:tap="handleTap" for="{{name}}">
+    <view class="k-btn {{them}} {{detectBorder}} k-button-class {{size?'k-btn-'+size:''}} {{type?'k-btn-'+type:''}} {{outline?'outline-class':''}} {{disabled?'k-btn-disabled':''}} {{distance?'k-btn-distance':''}}" hoverClass="{{disabled?'':outline?'k-btn-hover-border':'k-btn-hover'}}" hoverStartTime="{{hoverStartTime}}" hoverStayTime="{{hoverStayTime}}" hoverStopPropagation="{{hoverStopPropagation}}" style="{{width?'min-width:'+width+'rpx;width:'+width+'rpx;':''}} {{height?'height:'+height+'rpx;'+'line-height:'+height+'rpx;':''}} {{background?'background:'+background+';':''}} {{color?'color:'+color+';':''}} {{outline?'border-color:'+outlineColor+';':''}}" type="{{type}}">
+        <view class="cirqueBox {{size==='small'||size==='tiny'?'cirqueBox-small':''}}" wx:if="{{loading}}">
+            <view class="cirqueRed {{type?'cirqueRed-'+type:''}}"></view>
+            <view class="cirqueGrey {{type?'cirqueGrey-'+type:''}} {{size==='small'||size==='tiny'?'cirqueGrey-small':''}}"></view>
+        </view>
+        <k-icon class="leftIcon" name="icon-a-cx-base-{{iconName}}2x" size="{{iconSize}}" wx:if="{{iconName}}"></k-icon>
+        <slot></slot>
+    </view>
+</label>
+<button bind:getphonenumber="openTypeEvent" bind:getuserinfo="openTypeEvent" hoverStartTime="{{hoverStartTime}}" hoverStayTime="{{hoverStayTime}}" hoverStopPropagation="{{hoverStopPropagation}}" id="{{name}}" openType="{{openType}}" style="position: absolute;top: -999px;left: -999px;" wx:if="{{openType}}"></button>
+<k-components-detect></k-components-detect>

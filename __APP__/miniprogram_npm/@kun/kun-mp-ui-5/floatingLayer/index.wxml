@@ -1,0 +1,18 @@
+<view class="fl-container {{them}}" hidden="{{!show}}">
+    <view catch:tap="closeFloat" class="fl-mask"></view>
+    <view class="fl-box" style="bottom: {{transition?'0':'-600rpx'}}">
+        <view class="fl-tips" wx:if="{{tips}}">
+            <view class="fl-tips-text">{{tips}}</view>
+        </view>
+        <view class="fl-select" wx:if="{{list&&list.length>0}}">
+            <view catch:tap="selectEvent" class="fl-box-item fl-option" data-index="{{index}}" data-item="{{item}}" wx:for="{{list}}" wx:key="index">
+                <image class="fl-option-icon" src="{{item.icon}}" wx:if="{{item.icon}}"></image>
+                <view class="fl-option-text" style="color: {{selectIndex===index&&selectColor?selectColor:item.textColor?item.textColor:'#000000'}}"> {{item[listKey]||item.text}} </view>
+                <image class="fl-selected-icon" src="{{selectedIcon}}" wx:if="{{selectIndex===index}}"></image>
+            </view>
+            <slot></slot>
+        </view>
+        <view class="fl-no-list fl-box-item" wx:else>{{emptyText||'暂无选项'}}</view>
+        <view catch:tap="closeFloat" class="fl-box-item fl-cancel-btn">{{btnText||'取消'}}</view>
+    </view>
+</view>

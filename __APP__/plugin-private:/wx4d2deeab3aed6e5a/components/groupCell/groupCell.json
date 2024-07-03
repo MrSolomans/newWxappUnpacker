@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "wxml-to-canvas": "../../miniprogram_npm/@tencent/wwui-wxml2canvas/index"
+    }
+}

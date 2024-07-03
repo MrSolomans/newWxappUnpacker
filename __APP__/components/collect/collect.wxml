@@ -1,0 +1,8 @@
+<view>
+    <view bindtap="showModal" class="collect-container"> {{txt}} </view>
+    <view>
+        <modal bindcancel="handleCancel" bindconfirm="handleOk" title="准备收集" wx:if="{{isShowInput}}">
+            <input bindinput="fakecallback" value="{{umCompass}}" placeholder="请输入测试UM号" type="text"></input>
+        </modal>
+    </view>
+</view>

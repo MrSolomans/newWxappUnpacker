@@ -1,0 +1,117 @@
+.pa {
+    position: absolute;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.h100 {
+    height: 100%;
+}
+
+.jfvideo {
+    background-color: #000;
+}
+
+.jfvideo .bigView {
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.jfvideo .smallView0 {
+    height: 240rpx;
+    right: 8rpx;
+    top: 90px;
+    width: 180rpx;
+}
+
+.jfvideo .smallView0-landscape {
+    height: 108px;
+    left: 40px;
+    top: 8rpx;
+    width: 81px;
+}
+
+.jfvideo .smallView1 {
+    height: 240rpx;
+    right: 196rpx;
+    top: 8rpx;
+    width: 180rpx;
+}
+
+.jfvideo .smallView2 {
+    height: 240rpx;
+    right: 384rpx;
+    top: 8rpx;
+    width: 180rpx;
+}
+
+.jfvideo .smallView3 {
+    height: 240rpx;
+    right: 8rpx;
+    top: 256rpx;
+    width: 180rpx;
+}
+
+.jfvideo .smallView4 {
+    height: 240rpx;
+    right: 196rpx;
+    top: 256rpx;
+    width: 180rpx;
+}
+
+.jfvideo .smallView5 {
+    height: 240rpx;
+    right: 384rpx;
+    top: 256rpx;
+    width: 180rpx;
+}
+
+.jfvideo .smallView6 {
+    height: 240rpx;
+    right: 8rpx;
+    top: 504rpx;
+    width: 180rpx;
+}
+
+.jfvideo .smallView7 {
+    height: 240rpx;
+    right: 196rpx;
+    top: 504rpx;
+    width: 180rpx;
+}
+
+.jfvideo .smallView8 {
+    height: 240rpx;
+    right: 384rpx;
+    top: 504rpx;
+    width: 180rpx;
+}
+
+.jfvideo .mic {
+    bottom: 8rpx;
+    height: 48rpx;
+    position: absolute;
+    right: 8rpx;
+    width: 48rpx;
+}
+
+.jfvideo .username {
+    bottom: 0;
+    color: #fff;
+    font-size: 10px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+.jfvideo .headphoto {
+    height: 80%;
+    position: absolute;
+    right: 10%;
+    top: 0;
+    width: 80%;
+}

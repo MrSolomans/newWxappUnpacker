@@ -1,0 +1,401 @@
+<page-meta pageStyle="{{filterGrayColor}}">
+    <custom-navbar bind:goBindCar="goCarCenter" bind:region="regionEve" carLogo="{{currentCar.carLogo}}" fromPage="新首页" iconColor="white" isGetLocation="{{isGetLocation}}" navScrollBgColor="{{navScrollBgColor}}" needBarHeight="{{false}}" plateNum="{{currentCar.plateNum}}" showCarInfo="{{navbarCarInfo}}" source="{{source}}" textColor="#FFFFFF" titleText="平安好车主"></custom-navbar>
+    <k-float bannerList="{{componentBannerList}}" bind:loginAfter="bannerLoginAfter" bind:trackPoint="trackPoint" closeWidth="36" data-showpage="1" height="140" isCircle="{{false}}" loginParams="{{floatParams}}" showPage="1" width="140"></k-float>
+    <share-circles Public_Name="平安好车主首页"></share-circles>
+    <scroll-view scrollAnchoring scrollWithAnimation class="observe-scroll" scrollX="{{false}}" scrollY="{{true}}" style="height:100%;" type="list">
+        <view class="scroll-view">
+            <image class="home-bg" src="{{skinObj.bannerTopBg||homeTopBg}}"></image>
+            <view class="nav-scroll scroll-event" id="navScroll"></view>
+            <view class="bind-car" style="height: {{currentCar.plateNum?'112rpx':'152rpx'}}">
+                <view class="bind-car-info scroll-event" id="bindCar" style="height: {{currentCar.plateNum?'87rpx':'127rpx'}}">
+                    <view bind:tap="changeFloatingLayer" class="is-bind-car" data-type="{{true}}" wx:if="{{loginStatus&&currentCar.plateNum}}">
+                        <image class="plate-num-icon" src="{{currentCar.carLogo}}"></image>
+                        <text class="plate-num">{{currentCar.plateNum}}</text>
+                        <image class="change_car_icon" src="{{changeCarIcon}}"></image>
+                    </view>
+                    <view class="no-bind-car" wx:else>
+                        <view>
+                            <text>添加爱车</text> 享专属服务</view>
+                        <view>查违章 | 年检代办 | 续保提醒</view>
+                    </view>
+                    <k-button bind:kun-tap="goCarCenter" className="/pages/index/index2" height="56" kButtonClass="bind-car-btn" size="small" width="168" wx:if="{{!currentCar.plateNum}}">添加爱车</k-button>
+                    <view class="bind-car-insure" wx:elif="{{currentCar.isNeedInsure}}"> 您有车险即将到期，<text catch:tap="goToInsure">立即续保</text>
+                    </view>
+                    <view catch:tap="entryChargePileDetail" class="bind-car-charging-info" wx:elif="{{currentCar.isNewEnergy==='Y'&&chargePileData.price}}"> 附近充电站 {{chargePileData.price}} </view>
+                    <view catch:tap="entryOilDetail" class="bind-car-oil-info" wx:elif="{{oilPriceList.length>0}}"> 今日油价 <swiper circular vertical autoplay="{{swiperAutoplay}}" class="bind-car-oil-info-swiper" duration="1000">
+                            <swiper-item wx:for="{{oilPriceList}}" wx:key="item"> {{item.oilNo}} ¥{{item.price}} </swiper-item>
+                        </swiper>
+                    </view>
+                </view>
+            </view>
+            <view class="services" style="height:{{loginStatus?322:180}}rpx">
+                <view class="main-services">
+                    <view class="main-services-list">
+                        <view bind:tap="goMainService" class="main-services-list-item" data-item="{{item}}" wx:for="{{mainServiceList}}" wx:key="item">
+                            <image class="main-services-img {{item.showType==='3'?'services-red-point':''}}" src="{{item.iconUrl}}"></image>
+                            <view class="main-services-name">{{item.title}}</view>
+                            <view class="main-services-tag" wx:if="{{item.showType==='2'}}">NEW</view>
+                            <view class="main-services-tag" wx:elif="{{item.showType==='1'}}">HOT</view>
+                        </view>
+                    </view>
+                </view>
+                <block wx:if="{{loginStatus}}">
+                    <view class="king-kong" wx:if="{{kingKong.data.length>0}}">
+                        <swiper bind:change="serviceHandleIndex" class="king-kong-swiper" current="{{kingKong.index}}" duration="500">
+                            <swiper-item wx:for="{{kingKong.count}}" wx:for-item="count" wx:key="count">
+                                <view class="king-kong-container">
+                                    <view bind:tap="entryPageNew" class="king-kong-item" data-advert="{{data.title}}" data-item="{{data}}" wx:if="{{index<(count+1)*kingKong.pageSize&&index>=kingKong.pageSize*count}}" wx:for="{{kingKong.data}}" wx:for-item="data" wx:key="data">
+                                        <image class="king-kong-item-img {{data.showType==='1'?'services-red-point':''}}" src="{{data.icon}}"></image>
+                                        <view class="king-kong-item-name">{{data.title}}</view>
+                                        <view class="king-kong-tag" wx:if="{{data.showType==='2'}}">HOT</view>
+                                        <view class="king-kong-tag" wx:elif="{{data.showType==='3'}}">NEW</view>
+                                    </view>
+                                    <view bind:tap="openServiceMore" class="king-kong-item" wx:if="{{count===kingKong.count-1}}">
+                                        <image class="king-kong-item-img" src="{{kingKongMoreIcon}}"></image>
+                                        <view class="king-kong-item-name">更多</view>
+                                    </view>
+                                </view>
+                            </swiper-item>
+                        </swiper>
+                        <view class="king-kong-dot" style="width:{{24*kingKong.count}}rpx;">
+                            <k-swiper itemShape="block" swiperIndex="{{kingKong.index}}" swiperItemData="{{kingKong.count}}"></k-swiper>
+                        </view>
+                    </view>
+                    <view class="king-kong-skeleton" wx:else>
+                        <view class="king-kong-container">
+                            <view class="king-kong-item" wx:for="{{kingKong.pageSize}}" wx:key="index">
+                                <view class="king-kong-skeleton-icon"></view>
+                                <view class="king-kong-skeleton-name"></view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+            <view class="official-account" wx:if="{{showGuide}}">
+                <official-account></official-account>
+            </view>
+            <view class="resident-act">
+                <view class="resident-act-left" id="residentActLeft">
+                    <view wx:if="{{residentAct.leftList&&residentAct.leftList.length>0}}">
+                        <swiper circular autoplay="{{swiperAutoplay}}" bindchange="currentHandleIndex" class="resident-act-left-swiper" current="{{residentAct.index}}" duration="1000">
+                            <swiper-item bindtap="goPermanentAct" data-item="{{item}}" wx:for="{{residentAct.leftList}}" wx:key="item">
+                                <image class="resident-act-left-image" src="{{item.icon}}"></image>
+                            </swiper-item>
+                        </swiper>
+                        <view class="column-indicator" wx:if="{{residentAct.leftList.length>1}}">
+                            <k-swiper className="/pages/index/index2" swiperIndex="{{residentAct.index}}" swiperItemData="{{residentAct.leftList}}"></k-swiper>
+                        </view>
+                    </view>
+                    <view class="resident-act-skeleton" wx:else></view>
+                </view>
+                <view class="resident-act-right scroll-event" id="residentActRight">
+                    <block wx:if="{{residentAct.rightList&&residentAct.rightList.length>0}}">
+                        <view catch:tap="goToCommonActivity" class="resident-act-right-item" data-item="{{item}}" wx:for="{{residentAct.rightList}}" wx:key="index">
+                            <image class="resident-act-right-bg" src="{{index===0?skinObj.residentActTopBg:skinObj.residentActBottomBg}}" wx:if="{{index===0&&skinObj.residentActTopBg||index===1&&skinObj.residentActBottomBg}}"></image>
+                            <block wx:else>
+                                <view class="resident-act-right-text">
+                                    <view class="resident-act-right-title">{{item.title}}</view>
+                                    <view class="resident-act-right-subtitle">{{item.moreTitle}}</view>
+                                </view>
+                                <image class="resident-act-right-image" src="{{item.icon}}"></image>
+                            </block>
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <view class="resident-act-right-item" style="background: #F6F6F6" wx:for="{{2}}" wx:key="index"></view>
+                    </block>
+                </view>
+            </view>
+            <view class="column-box service scroll-event" id="serviceList" wx:if="{{serDiscounts.status&&loginStatus}}">
+                <view class="column-title">
+                    <view class="column-text">{{serDiscounts.title}}<text>{{serDiscounts.secondTitle}}</text>
+                    </view>
+                </view>
+                <view class="column-content">
+                    <view class="column-content-left">
+                        <swiper circular autoplay="{{swiperAutoplay}}" bind:change="changeServiceIndex" class="service-swiper" current="{{serviceIndex}}" duration="1000" interval="7000" wx:if="{{serviceList&&serviceList.length>0}}">
+                            <swiper-item wx:for="{{serviceList}}" wx:key="index">
+                                <view catch:tap="entryServiceDetail" class="service-item" data-item="{{item}}">
+                                    <view class="service-title">
+                                        <image class="title-icon" src="{{iconServiceTitle}}"></image>
+                                        <view class="title-text">{{item.title}}</view>
+                                        <view catch:tap="entryServiceMore" class="title-more" data-item="{{item}}" wx:if="{{item.moreUrl}}">
+                                            <text>更多</text>
+                                            <image class="arrow-right-icon" src="{{arrowRight}}"></image>
+                                        </view>
+                                    </view>
+                                    <block wx:if="{{item.hasService}}">
+                                        <block wx:if="{{item.serviceType==='charge'}}">
+                                            <view class="charge-image">
+                                                <image mode="aspectFill" src="{{item.stationPicture||defaultChargeBg}}"></image>
+                                                <view class="charge-distance">距您{{item.distance}} 驾车{{item.duration}}</view>
+                                            </view>
+                                            <view class="charge-detail">
+                                                <view class="charge-name">{{item.stationName}}</view>
+                                                <view class="charge-tips">
+                                                    <block wx:for="{{item.tags}}" wx:for-item="tags" wx:key="index">
+                                                        <view>{{tags}}</view>
+                                                        <view class="line" wx:if="{{index<item.tags.length-1}}"></view>
+                                                    </block>
+                                                </view>
+                                                <view class="charge-bottom">
+                                                    <view class="price-box" wx:if="{{item.hczPrice}}">
+                                                        <view class="charge-price">
+                                                            <text>{{item.hczPrice}}</text>元/度</view>
+                                                        <view class="original" wx:if="{{item.oriPrice}}">{{item.oriPrice}}元/度</view>
+                                                    </view>
+                                                    <view class="charge-price" wx:else>暂无价格</view>
+                                                </view>
+                                            </view>
+                                        </block>
+                                        <block wx:elif="{{item.serviceType==='gas'}}">
+                                            <view class="service-image">
+                                                <view>
+                                                    <image src="{{item.gasLogoBig||defaultGasBg}}"></image>
+                                                </view>
+                                            </view>
+                                            <view class="service-detail">
+                                                <view class="service-name">{{item.gasName}}</view>
+                                                <view class="service-distance">距您{{item.distanceShowMsg}} 驾车{{item.drivTime}}</view>
+                                                <view class="service-preferential" wx:if="{{item.lastDiscountRemark||item.firstDiscountRemark}}">
+                                                    <view class="preferential-left">{{item.lastDiscountRemark}}</view>
+                                                    <view class="preferential-right">{{item.firstDiscountRemark}}</view>
+                                                </view>
+                                                <view class="service-preferential-null" wx:else></view>
+                                                <view class="service-price" wx:if="{{item.pricePartner||item.priceOfficial}}">¥<text>{{item.pricePartner||item.priceOfficial}}</text>起/升</view>
+                                                <view class="service-price" wx:else>暂无价格</view>
+                                            </view>
+                                        </block>
+                                        <block wx:elif="{{item.serviceType==='park'}}">
+                                            <view class="park-image">
+                                                <image mode="aspectFill" src="{{item.picture||defaultParkBg}}"></image>
+                                                <view class="park-distance">距您{{item.distance}} 驾车约{{item.duration}}</view>
+                                            </view>
+                                            <view class="park-detail">
+                                                <view class="park-name">{{item.parkName}}</view>
+                                                <view class="park-tips">
+                                                    <view class="park-pay-method" wx:if="{{item.isHczPay===1}}">线上支付</view>
+                                                    <view class="park-space">车位{{item.leftNumDesc}}</view>
+                                                </view>
+                                                <view class="park-bottom">
+                                                    <view class="park-price" wx:if="{{item.price&&item.price!=='--'}}">
+                                                        <text>{{item.price}}</text>{{item.priceUnit}}</view>
+                                                    <view class="park-price" wx:else>暂无价格</view>
+                                                    <view catch:tap="goNavigation" class="park-navigation" data-item="{{item}}">
+                                                        <image src="{{navigationIcon}}"></image>
+                                                        <view>导航</view>
+                                                    </view>
+                                                </view>
+                                            </view>
+                                        </block>
+                                        <block wx:elif="{{item.serviceType==='carWash'}}">
+                                            <view class="service-image">
+                                                <view>
+                                                    <image src="{{item.imageUrl||defaultCarWashBg}}"></image>
+                                                </view>
+                                            </view>
+                                            <view class="service-detail">
+                                                <view class="service-name">{{item.outletName}}</view>
+                                                <view class="service-distance" wx:if="{{item.distance&&item.duration}}"> 距您{{item.distance}} 驾车约{{item.duration}} </view>
+                                                <view class="service-preferential" wx:if="{{item.openingTime&&item.closingTime}}">
+                                                    <view class="preferential-left">营业时间</view>
+                                                    <view class="preferential-right">{{item.openingTime}}-{{item.closingTime}}</view>
+                                                </view>
+                                                <view class="car-wash-price" wx:if="{{item.minExchangePrice||item.marketPrice}}">
+                                                    <block wx:if="{{loginStatus}}">
+                                                        <text class="present">{{item.minExchangePrice}}</text>元<text class="original">{{item.marketPrice}}元</text>
+                                                    </block>
+                                                    <block wx:else>
+                                                        <text class="present">{{item.marketPrice}}</text>元 </block>
+                                                </view>
+                                                <view class="car-wash-price" wx:else>暂无价格</view>
+                                            </view>
+                                        </block>
+                                    </block>
+                                    <view class="column-text-null" wx:else>暂无{{item.title}}信息</view>
+                                </view>
+                            </swiper-item>
+                        </swiper>
+                        <view class="column-indicator" style="bottom:-3rpx" wx:if="{{serviceList.length>1}}">
+                            <k-swiper className="/pages/index/index2" swiperIndex="{{serviceIndex}}" swiperItemData="{{serviceList}}"></k-swiper>
+                        </view>
+                    </view>
+                    <view class="column-content-right">
+                        <view catch:tap="goCorrelation" class="content-right-top" data-module="2" data-url="{{relatedList.actUrl}}">
+                            <image class="relatedActBg" src="{{relatedList.actBg}}" style="opacity: {{relatedOpacity}}"></image>
+                        </view>
+                        <view catch:tap="goCorrelation" class="content-right-bottom" data-module="3" data-url="{{relatedList.serviceUrl}}">
+                            <image class="relatedServiceBg" src="{{relatedList.serviceBg}}" style="opacity: {{relatedOpacity}}"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="column-box" wx:if="{{hczGuarantee.status}}">
+                <view class="column-title">
+                    <view class="column-text">{{hczGuarantee.title}}<text>{{hczGuarantee.secondTitle}}</text>
+                    </view>
+                </view>
+                <view class="column-content">
+                    <view class="column-content-left" id="freeInsure scroll-event" wx:if="{{freeInsure&&freeInsure.length>0}}">
+                        <swiper circular autoplay="{{swiperAutoplay}}" bind:change="changeInsureIndex" class="free-insure-swiper" current="{{insureIndex}}" duration="1000">
+                            <swiper-item wx:for="{{freeInsure}}" wx:key="index">
+                                <view catch:tap="entryInsureDetail" class="column-content-insure-free" data-item="{{item}}">
+                                    <view class="insure-img">
+                                        <image class="insure-bg" src="{{item.smallPic}}"></image>
+                                    </view>
+                                    <view class="insure-text">
+                                        <view class="insure-name">{{item.productName}}</view>
+                                        <view class="insure-btn">免费领取</view>
+                                    </view>
+                                </view>
+                            </swiper-item>
+                        </swiper>
+                    </view>
+                    <view class="column-content-left-double scroll-event" id="noFreeInsure" style="{{loginStatus?'':'width:100%;justify-content:space-between'}}" wx:elif="{{noFreeInsure.data&&noFreeInsure.data.length>0}}">
+                        <view catch:tap="entryInsureDetail" class="content-right-top content-left-insure" data-item="{{noFreeInsure.data[index]}}" style="width:{{loginStatus?'':350}}rpx" wx:for="{{loginStatus?2:4}}" wx:key="index">
+                            <view class="column-content-insure">
+                                <view class="insure-title {{rankObj[noFreeInsure.data[index].rankType]?'one-line':'two-line'}}">{{noFreeInsure.data[index].productName}}</view>
+                                <view class="insure-tips">{{noFreeInsure.data[index].feature}}</view>
+                                <view class="insure-top" style="background-image: url({{insureTopBg}})" wx:if="{{rankObj[noFreeInsure.data[index].rankType]}}"> {{rankObj[noFreeInsure.data[index].rankType]}}第{{noFreeInsure.data[index].rank}}名 </view>
+                                <view class="insure-price">
+                                    <text>{{noFreeInsure.data[index].minPrice}}</text>{{noFreeInsure.data[index].priceUnit}} </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="column-content-left" wx:else>
+                        <view class="column-text-null">暂无保障信息</view>
+                    </view>
+                    <view class="column-content-right" wx:if="{{loginStatus}}">
+                        <view class="family-security scroll-event" id="family">
+                            <view class="content-right-title">
+                                <image class="title-icon" src="{{familyIcon}}"></image>
+                                <view class="title-text">我的家庭保障</view>
+                            </view>
+                            <view catch:tap="entryFamilyProduct" class="family-main" wx:if="{{exFamilyProduct}}">
+                                <view class="title">{{exFamilyProduct.productName}}</view>
+                                <view class="tips">{{exFamilyProduct.productBoom||exFamilyProduct.feature}}</view>
+                                <view class="btn">立即配置</view>
+                                <view class="right-top-text" wx:if="{{exFamilyProduct.productTag}}"> {{exFamilyProduct.productTag}} </view>
+                            </view>
+                            <view class="family-main-null" wx:else>
+                                <view class="column-text-null">暂无推荐产品</view>
+                            </view>
+                            <view class="family-operation">
+                                <view catch:tap="addFamily" class="add-family">
+                                    <block wx:if="{{!familyGuarantee.memberCount||familyGuarantee.memberCount===0}}">
+                                        <view class="add-family-img">
+                                            <image src="{{addFamilyIcon}}"></image>
+                                        </view>
+                                        <view class="text">添加家人</view>
+                                    </block>
+                                    <block wx:else>
+                                        <view class="add-family-img">
+                                            <image src="{{familyMemberIcon}}"></image>
+                                        </view>
+                                        <view class="text">{{familyGuarantee.memberCount}}位家人</view>
+                                    </block>
+                                </view>
+                                <view class="line"></view>
+                                <view class="family-plan">
+                                    <view catch:tap="goQuizDetail" class="plan-item" wx:if="{{familyGuarantee.isTrue&&familyGuarantee.score}}">
+                                        <view class="plan-item-title">保障指数</view>
+                                        <view class="plan-item-point">
+                                            <text>{{familyGuarantee.score}}</text>{{familyGuarantee.score!==100?'分':''}} </view>
+                                    </view>
+                                    <view catch:tap="goFamilyQuiz" class="plan-item-img" wx:else>
+                                        <image src="{{familyInsureIcon}}"></image>
+                                    </view>
+                                    <view class="text">家庭保障方案</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="column-box" wx:if="{{hczInformation.status}}">
+                <view class="column-title">
+                    <view class="column-text"> {{hczInformation.title}}<text>{{hczInformation.secondTitle}}</text>
+                    </view>
+                </view>
+                <view class="column-content">
+                    <view catch:tap="enterVideo" class="column-content-left scroll-event" id="video">
+                        <view class="column-content-video" wx:if="{{videoData.contentId}}">
+                            <view class="video-img">
+                                <image class="video-bg" mode="aspectFill" src="{{videoData.thumbnailImages||videoData.image}}"></image>
+                                <image class="video-icon" src="{{playIcon}}"></image>
+                            </view>
+                            <view class="video-text">
+                                <view class="video-title">{{videoData.title}}</view>
+                                <view class="video-content">
+                                    <view class="video-user">
+                                        <image class="head-icon" src="{{videoData.avatar||avatarImg}}"></image>
+                                        <view class="name">{{videoData.nickName}}</view>
+                                    </view>
+                                    <view class="read-num">{{videoData.readCnt}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="column-content-right">
+                        <view class="content-right-top scroll-event" id="carArticles">
+                            <view class="car-articles">
+                                <view class="content-right-title">
+                                    <image class="title-icon" src="{{knowledgeIcon}}"></image>
+                                    <view class="title-text">车主精选</view>
+                                </view>
+                                <view catch:tap="openArticle" class="car-articles-list" data-contentId="{{articleList.contentId}}" wx:if="{{articleList.title&&articleList.summary}}">
+                                    <view class="car-articles-title">{{articleList.title}}</view>
+                                    <view class="car-articles-content">{{articleList.summary}}</view>
+                                </view>
+                                <view class="car-articles-list car-articles-null" wx:else>
+                                    <view class="column-text-null">暂无精选文章</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="content-right-bottom scroll-event" id="carOriginal">
+                            <view class="car-original">
+                                <view class="content-right-title">
+                                    <image class="title-icon" src="{{carOriginalIcon}}"></image>
+                                    <view class="title-text">车主原创</view>
+                                </view>
+                                <view class="car-original-item">
+                                    <swiper circular vertical autoplay="{{swiperAutoplay}}" class="original_swiper_item" duration="1000" wx:if="{{originalList&&originalList.length>0}}">
+                                        <swiper-item wx:for="{{originalList}}" wx:key="index">
+                                            <view catch:tap="openCarOriginal" class="car-original-list" data-item="{{item}}">
+                                                <image class="car-original-img" src="{{item.squareImages[0]}}" wx:if="{{item.squareImages[0]}}"></image>
+                                                <image class="car-original-img" mode="aspectFill" src="{{item.image[0]}}" wx:else></image>
+                                                <view class="car-original-content">{{item.title}}</view>
+                                            </view>
+                                        </swiper-item>
+                                    </swiper>
+                                    <view class="column-text-null" wx:else>暂无原创内容</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="tempEntry" wx:if="{{tempEntryList.length>0}}">
+            <button class="cm-formid_btn temp-title">{{environment===0?'测试':'生产'}}环境快速入口</button>
+            <view class="temp-list">
+                <button bind:tap="testEntrance" class="cm-formid_btn item-list-btn" data-item="{{item}}" wx:for="{{tempEntryList}}" wx:key="index">
+                    <image class="temp-img" src="{{item.icon||tempImg}}"></image>
+                    <text>{{item.title}}</text>
+                </button>
+            </view>
+        </view>
+    </scroll-view>
+    <k-toast></k-toast>
+    <collection navigationBarHeight="{{navigationBarHeight}}"></collection>
+    <new-authorize bind:cancel="cancel" bind:onNext="{{needNext}}" eventObj="{{eventObj}}" failCallback="{{failCallback}}" isShowToast="{{isShowToast}}" loginParams="{{loginParams}}"></new-authorize>
+    <show-alert bind:callback="windowManage" pageType="home" source="首页" windowProp="{{currentWindow.prop}}"></show-alert>
+    <member-alert bind:callback="windowManage" windowProp="{{currentWindow.prop}}"></member-alert>
+    <accredit-window bind:callback="windowManage" loginStatus="{{loginStatus}}" windowProp="{{currentWindow.prop}}"></accredit-window>
+    <guide-follow bind:callback="bubbleManage" bubbleProp="{{currentBubble.prop}}" from="2" loginStatus="{{loginStatus}}" source="{{source}}"></guide-follow>
+    <bottom-bubble bind:callback="bubbleManage" bubbleProp="{{currentBubble.prop}}" isNewUser="{{isNewUser}}" loginStatus="{{loginStatus}}" source="{{source}}"></bottom-bubble>
+    <k-floating-layer bind:select="setCurrentCar" list="{{carList}}" listKey="plateNum" selectColor="#FF6300" selectIndex="{{currentCar.index}}" show="{{floatingLayer.show}}" tips="{{floatingLayer.tips}}">
+        <view catch:tap="addCar" class="select_car_slot" wx:if="{{carList.length<=2}}">添加爱车</view>
+    </k-floating-layer>
+    <collect wx:if="{{environment===0}}"></collect>
+</page-meta>

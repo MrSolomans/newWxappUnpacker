@@ -1,0 +1,99 @@
+.teaching_top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 30rpx;
+    padding: 30rpx 0;
+}
+
+.teaching_title {
+    color: #222;
+    font-family: PingFangSC-Semibold,PingFang SC;
+    font-size: 32rpx;
+    font-weight: 600;
+    line-height: 32rpx;
+}
+
+.teaching_more {
+    color: #50575d;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-size: 28rpx;
+    font-weight: 400;
+    line-height: 28rpx;
+    margin-top: 2rpx;
+}
+
+.teaching_more_img {
+    height: 20rpx;
+    margin-left: 8rpx;
+    width: 12rpx;
+}
+
+.class_wrap {
+    background: #fff;
+    border-radius: 20rpx;
+    height: 360rpx;
+    margin: 20rpx auto 0;
+    width: 690rpx;
+}
+
+.class_scroll_container {
+    margin-left: 30rpx;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.class_item {
+    background-color: rgb(0,0,0,.5);
+    border-radius: 16rpx;
+    display: inline-block;
+    height: 241rpx;
+    margin-right: 10rpx;
+    overflow: hidden;
+    position: relative;
+    width: 308rpx;
+}
+
+.class_item_image {
+    height: 241rpx;
+    position: absolute;
+    width: 308rpx;
+    z-index: 1;
+}
+
+.class_item_text {
+    position: absolute;
+    z-index: 2;
+}
+
+.class_title {
+    color: #fff;
+    font-family: PingFangSC-Medium,PingFang SC;
+    font-size: 36rpx;
+    font-weight: 500;
+    line-height: 36rpx;
+    margin: 50rpx 0 0 22rpx;
+}
+
+.class_content {
+    color: #fff;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-size: 24rpx;
+    font-weight: 400;
+    line-height: 24rpx;
+    margin: 18rpx 0 39rpx 22rpx;
+}
+
+.class_button {
+    border: 2rpx solid #fff;
+    border-radius: 24rpx;
+    color: #fff;
+    font-family: PingFangSC-Medium,PingFang SC;
+    font-size: 24rpx;
+    font-weight: 500;
+    height: 40rpx;
+    line-height: 40rpx;
+    margin-left: 23rpx;
+    text-align: center;
+    width: 125rpx;
+}

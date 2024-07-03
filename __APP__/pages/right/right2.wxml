@@ -1,0 +1,202 @@
+<custom-navbar back="{{false}}" bgColor="{{navigationBarHave?'#F6F7F8':currentNavScrollBgColor}}" home="{{false}}" iconColor="white" navigationBarHave="{{navigationBarHave}}" textColor="#fff" titleText="个人中心" topBgImg="{{mineTopBg}}"></custom-navbar>
+<k-float bannerList="{{componentBannerList}}" bind:loginAfter="bannerLoginAfter" bind:trackPoint="trackPoint" closeWidth="36" data-showpage="4" height="140" isCircle="{{false}}" loginParams="{{bannerLoginParams}}" showPage="4" width="140"></k-float>
+<share-circles Public_Name="个人中心"></share-circles>
+<scroll-view scrollAnchoring scrollWithAnimation bind:scroll="onScroll" scrollX="{{false}}" scrollY="{{true}}" style="height:100%">
+    <view class="wrapper">
+        <view class="mine_top_wrap wrapper_item" data-id="mine_top_wrap" data-text="mine_top_wrap" data-track="PACX_W00001375" style="background:url({{skinObj.bannerTopBg?skinObj.bannerTopBg:''}}) no-repeat;background-size:100%;background-position:{{navigationBarHave?backgroundPosition:''}};background:{{!skinObj.bannerTopBg?'linear-gradient(360deg,rgba(255,171,94,1) 0%,rgba(255,135,39,1) 100%)':''}}">
+            <view class="user">
+                <view class="user_left">
+                    <view bind:tap="interceptLogin" class="avatar" data-func-name="checkAuthor" style="border: 0" wx:if="{{!userphone}}">
+                        <image class="avatar_image" src="{{avatarImg}}"></image>
+                    </view>
+                    <view bindtap="goToUserInfo" class="avatar" wx:else>
+                        <image class="avatar_image" src="{{userInfo.avatarUrl}}"></image>
+                        <view class="avatar_dot" wx:if="{{isShowUserRedDot}}"></view>
+                    </view>
+                    <image class="avatar_login" src="https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/mine/login.png" wx:if="{{userphone}}"></image>
+                    <view class="nickName">
+                        <view bind:tap="interceptLogin" class="nologin_text" data-func-name="checkAuthor" wx:if="{{!userphone}}">未登录</view>
+                        <view class="user_wrap" wx:else>
+                            <view bindtap="goToUserInfo" class="user_name">{{userInfo.nickName}}</view>
+                            <view bindtap="memberLevelPage" class="member_level" data-type="1">
+                                <image class="member_image" src="{{gradeUrl}}"></image>
+                                <view>{{memberLevel}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="goToCheckIn" class="arrowImg" wx:if="{{isHasSign&&userphone}}">
+                    <view class="check_text">已签到</view>
+                </view>
+                <view bindtap="goToCheckIn" class="arrowImg" wx:if="{{!isHasSign||!userphone}}">
+                    <image class="check_icon" src="https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/mine/checkIcon.png"></image>
+                    <view class="check_text">签到</view>
+                </view>
+            </view>
+            <view class="fun_info">
+                <view bindtap="bdcxpage" class="fun_info_item points">
+                    <view class="fun_info_item_num">{{effectivePoints+unenforcedPoints||0}}</view>
+                    <view class="fun_info_item_str">我的保单</view>
+                </view>
+                <view bindtap="mylipinpage" class="fun_info_item card_Voucher">
+                    <view class="fun_info_item_num">{{cardAmount||0}}</view>
+                    <view class="fun_info_item_str">我的卡券</view>
+                </view>
+            </view>
+            <view class="member_area" style="background-image: url('https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/mine/memberBg.png')" wx:if="{{vipInterestOutVo.vipInterestVoList&&vipInterestOutVo.vipInterestVoList.length>0}}">
+                <image class="member_icon" src="https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/mine/memberIcon.png"></image>
+                <view style="width:90%;">
+                    <swiper autoplay="true" circular="true" duration="500" interval="3000" style="height:88rpx" vertical="true">
+                        <swiper-item bindtap="memberLevelPage" data-button="{{item.buttonText}}" data-content="{{item.textDesc}}" data-type="3" wx:for="{{vipInterestOutVo.vipInterestVoList}}" wx:key="index">
+                            <view class="member_wrap">
+                                <view class="member_left">
+                                    <view class="member_text">{{item.text}}</view>
+                                    <view class="member_border"></view>
+                                    <view class="member_description">{{item.textDesc}}</view>
+                                </view>
+                                <view class="member_btn">
+                                    <view>{{item.buttonText}}</view>
+                                    <image class="use_more" src="https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/mine/useMore.png"></image>
+                                </view>
+                            </view>
+                        </swiper-item>
+                    </swiper>
+                </view>
+            </view>
+        </view>
+        <official-account wx:if="{{showGuide}}"></official-account>
+        <view class="middle_function_con">
+            <view class="middle_function">
+                <view bindtap="myMiddleFunPage" class="middle_function_item" data-PublicName="挪车" data-url="/pages/moveCar/index">
+                    <image class="function_item_img" src="{{myCommission}}"></image>
+                    <view class="function_item_text">挪车</view>
+                </view>
+                <view bindtap="myMiddleFunPage" class="middle_function_item" data-PublicName="理赔" data-url="/pages/myClaim/myClaim">
+                    <image class="function_item_img" src="{{myClaim}}"></image>
+                    <view class="function_item_text">理赔</view>
+                </view>
+                <view bindtap="myCarPage" class="middle_function_item">
+                    <image class="function_item_img" src="{{myCar}}"></image>
+                    <view class="function_item_text">车辆</view>
+                </view>
+                <view bindtap="myOrdersPage" class="middle_function_item">
+                    <image class="function_item_img" src="{{myOrder}}"></image>
+                    <view class="function_item_text">订单</view>
+                </view>
+            </view>
+            <car-renew-insurance id="car_renew" isHome="{{false}}" mediaSource="SC03-XXTB-DIRECT-CXMP$GRZX-XBTiXing" source="GeRenZhongXin-XuBaoTiXing"></car-renew-insurance>
+        </view>
+        <view class="my_car wrapper_item" data-id="my_car_heard" data-track="PACX_W00001376">
+            <view class="my_car_heard">
+                <view class="my_car_heard_title"> 我的爱车 </view>
+                <view bindtap="goCarCenter" class="my_car_heard_go" wx:if="{{bindSectorOutVo.url}}"> 车辆管理 <image class="my_car_heard_go_img" mode="aspectFit|aspectFill|widthFix" role="img" src="https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/mine/moreShape.png"></image>
+                </view>
+            </view>
+            <view class="my_car_info {{carNo?'car_info_padding':''}}" wx:if="{{carNo}}">
+                <view class="car_info_logo">
+                    <image class="" lazyLoad="false" mode="aspectFit|aspectFill|widthFix" src="{{logo}}"></image>
+                </view>
+                <view class="car_info_carNo"> {{carNo}} </view>
+                <view class="car_info_vehicleDisplayName"> {{vehicleDisplayName}} </view>
+            </view>
+            <view bindtap="goCarCenter" class="add_car" wx:if="{{!carNo}}">
+                <image binderror="" bindload="" lazyLoad="false" mode="aspectFit|aspectFill|widthFix" src="{{addBtn}}"></image>
+                <view class="add_car_text">添加爱车 享超值服务</view>
+            </view>
+            <view class="my_car_goto" wx:if="{{bindSectorOutVo.bindSectorVoList&&bindSectorOutVo.bindSectorVoList.length>0&&userphone}}">
+                <view bindtap="goOterServer" class="my_car_item" data-url="{{item.url}}" wx:for="{{bindSectorOutVo.bindSectorVoList}}" wx:key="item">
+                    <view class="car_item_img">
+                        <image mode="aspectFit|aspectFill|widthFix" src="{{item.textIcon}}"></image>
+                    </view>
+                    <view class="car_item_text">{{item.text}}</view>
+                </view>
+            </view>
+        </view>
+        <qiwei-rocket objective="促下载" qiweiSecondTitle="1对1服务，投保理赔更省心" sceneId="{{sceneId}}"></qiwei-rocket>
+        <view class="family" wx:if="{{isShowFamilyModule}}">
+            <view class="family_heard">
+                <view class="family_heard_title">我的家庭保障</view>
+                <view bind:tap="goFamilyPage" class="family_heard_go" data-track="PACX_W00001406">查看 <image class="family_heard_go_img" mode="aspectFit|aspectFill|widthFix" role="img" src="https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/mine/moreShape.png"></image>
+                </view>
+            </view>
+            <view class="family_content">
+                <view class="family_content_heard">
+                    <view class="th01">
+                        <view class="th_top">配置</view>
+                        <view class="th_btm">优先级</view>
+                    </view>
+                    <view class="family_content_th02" wx:for="{{familyTh}}" wx:key="index">
+                        <view class="th02">
+                            <view class="count">{{item.count}}</view>
+                            <view class="">
+                                <view class="th_top">{{item.msg}}</view>
+                                <view class="th_btm">保障</view>
+                            </view>
+                        </view>
+                        <image class="arrow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAwCAYAAADZ2LD7AAABEUlEQVQ4T12T7TkDURSEZ3oQaiDU4KMbpAZBDUQ3SA2CGhJ6OJ7J3XPNPfm1eZ+7O++eM8uI2AI4I7nD9GNEvAJ4JPnu8AnAN8lnh9cATkneOjwH8EDywuEBgC+Shx3qYjLQI370nxMcDBIOBgkHg4QyuCd56c8cDPYnq4HDbuBQBnqJlcMbAHPNwGE3cDgD8KkZdDgYpNIE3/ZjLLAZFCiDkwqbQTnZDArUSj4q1PLuKtSajytUITYVqjrLClWyf8+IkM6G5JFPqSWTVw5bMrlw2JLJF4cam3a/dtiSyd9sSE/2hvRkh2245MKhkrXJlcOe7FDJakert7+zfx1KXmZh8+SQnLBX0G8fkvPkkCz4B0cF0gB3nUijAAAAAElFTkSuQmCC" wx:if="{{index!==3}}"></image>
+                    </view>
+                </view>
+                <view class="family_content_table" style="background:{{(index+1)%2===0?'rgba(255,102,0,0.08)':'rgba(255,102,0,0.05)'}};" wx:for="{{familyOverviewList}}" wx:key="index">
+                    <view class="family_relation">{{item.relation}}</view>
+                    <view class="icon" wx:if="{{item.healthInsuranceCount||item.accidentInsuranceCount||item.propertyInsuranceCount||item.carInsuranceCount}}" wx:for="{{item.ensureList}}" wx:for-index="ensureIndex" wx:for-item="ensureItem" wx:key="ensureIndex">
+                        <image class="icon_right" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAaVBMVEUAAAD/ZwD/dQD/ZgD/ZgD/ZwD/ZwD/ZgD/ZwD/ZwD/aAD/ZgD/aAD/aQD/awD/ZgD/ZwD/ZgD/ZwD/ZgD/ZgD/ZgD/awD/bwD/ZgD/ZwD/ZgD/ZwD/ZwD/ZgD/aAD/ZwD/ZgD/aAD/ZgBZIO3bAAAAInRSTlMAZgb57tG2sZeBc0g2ExDzzcK8qZCKHxfj397Hn3pYUi0bfSbn8AAAAIpJREFUKM/FkVkOwjAMRN0mbUpXaAtlX+b+hwQLLBRl/vt+Er+JJUeW9chmqg8jdvT5gG2f6q4E9c8zUHSpfwzcbwAcl9RfAbjWZgt2ywM+ZL+q8XD115fqK+uutAq9+UsuUXJqZdLTv+TPrMaNUO7RLHsYkwhN/EL+ZZOypBDCDUAjjFp3w5O44Q2WvA4O0NkGaQAAAABJRU5ErkJggg==" wx:if="{{ensureItem>0}}"></image>
+                    </view>
+                    <view bind:tap="goFamilyPage" class="family_recom_msg" data-track="PACX_W00001405" wx:if="{{familyList.length<=0&&!item.healthInsuranceCount&&!item.accidentInsuranceCount&&!item.propertyInsuranceCount&&!item.carInsuranceCount}}">
+                        <view class="">暂无保障，推荐去看看<text class="text">保障配置攻略</text>
+                        </view>
+                        <image class="arrow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAUCAMAAACOLiwjAAAAY1BMVEUAAAD/aAD/ZgD/ZgD/ZgD/ZAD/ZQD/ZgD/ZgD/ZwD/ZgD/ZgD/ZAD/ZgD/ZwD/ZgD/ZQD/ZQD/ZgD/ZgD/ZgD/ZgD/ZgD/ZgD/ZgD/ZwD/ZwD/ZgD/ZQD/ZQD/ZQD/ZgD/ZgDLWdKeAAAAIHRSTlMABdrKFA+g79LCubAL4yYgGvTq6cOom5OFd2ZaRDowGVuEJjUAAABsSURBVBjTTc5JEoUgDABRRQSc/aOz9v1PqVVChFW/BUkSY+dE3hsmwfqCUbRZGET7B0wa1DZQiToFZR10OPjmQTqDTAflxSWZaUD5TH/QtL4rUN3ddQmqfz477Tsaqx0UfmEfn/KPj1yskT4B8lkHbLXUG7gAAAAASUVORK5CYII="></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="welfare_container" wx:if="{{carBenefits.length>0&&hczWelfarePlanOutVo}}">
+            <view class="welfare_title_wrap">
+                <view class="my_car_heard_title">{{hczWelfarePlanOutVo.moduleName}}</view>
+                <view bindtap="goToMoreWelfare" class="welfare_more_text" wx:if="{{hczWelfarePlanOutVo.url&&userphone}}"> 更多{{loginStatus}} <image binderror="" bindload="" class="welfare_more_img" lazyLoad="false" mode="aspectFit|aspectFill|widthFix" src="https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/mine/moreShape.png"></image>
+                </view>
+            </view>
+            <view class="welfare_item_wrap">
+                <scroll-view class="welfare_scroll" scrollX="true" style="height:188rpx;">
+                    <view bindtap="goToWelfare" class="welfare_item wrapper_item" data-id="{{item.title}}" data-text="{{item.title}}" data-track="PACX_W00001378" data-url="{{item.url}}" wx:for="{{carBenefits}}" wx:key="index">
+                        <image class="welfarte_item_image" src="{{item.icon}}"></image>
+                        <view class="welfare_item_text">{{item.title}}</view>
+                        <view class="welfare_item_sub">{{item.moreTitle}}</view>
+                    </view>
+                </scroll-view>
+                <view class="welfare_break"></view>
+            </view>
+        </view>
+        <view class="banner_wrap" wx:if="{{activeBannerArr.length>0}}">
+            <swiper autoplay="{{activeBannerArr.length>=2}}" bindchange="currentHandleIndex" circular="true" duration="1000" interval="4000" style="height:130rpx">
+                <swiper-item class="" wx:if="{{index<5}}" wx:for="{{activeBannerArr}}" wx:key="id_cm">
+                    <image bindtap="redirectPages" class="banner_img wrapper_item" data-id="{{item.title}}" data-page="{{item.url}}" data-title="{{item.title}}" data-track="PACX_W00001380" src="{{item.icon}}"></image>
+                </swiper-item>
+            </swiper>
+            <view class="swiper_dot">
+                <view class="square_dot {{currentIndex===index?'active':''}}" wx:if="{{activeBannerArr.length>1&&index<5}}" wx:for="{{activeBannerArr}}" wx:key="index"></view>
+            </view>
+        </view>
+        <view class="tools_container" wx:if="{{toolSectorOutVo.toolSectorVoList&&toolSectorOutVo.toolSectorVoList.length>0}}">
+            <view class="welfare_title_wrap">
+                <view class="my_car_heard_title">{{toolSectorOutVo.moduleName}}</view>
+            </view>
+            <view class="tools_item_wrap">
+                <view class="tools_item wrapper_item" data-id="{{item.text}}" data-text="{{item.text}}" data-track="PACX_W00054308" wx:for="{{toolSectorOutVo.toolSectorVoList}}" wx:key="item">
+                    <button bindtap="goToTools" class="tools_button" data-title="{{item.text}}" data-url="{{item.url}}" wx:if="{{item.type==='1'||item.type==='3'}}">
+                        <image class="tools_item_image" src="{{item.textIcon}}"></image>
+                        <view class="tools_item_text">{{item.text}}</view>
+                    </button>
+                    <button bindcontact="contact" bindtap="goToFollow" class="tools_button" data-title="{{item.text}}" openType="contact" sendMessageImg="https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/mine/shareBg.jpg" sendMessagePath="/pages/index/index2" sendMessageTitle="立即关注平安好车主公众号" sessionFrom="{\"sourceKey\"：\"526\",\"sourceTitle\":\"立即关注平安好车主公众号\"}" showMessageCard="true" wx:if="{{item.type==='2'}}">
+                        <image class="tools_item_image" src="{{item.textIcon}}"></image>
+                        <view class="tools_item_text">{{item.text}}</view>
+                        <image class="follow_img" src="https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/mine/followed.png" wx:if="{{item.toolType==='1'&&isFollowAccount}}"></image>
+                    </button>
+                </view>
+            </view>
+        </view>
+    </view>
+</scroll-view>
+<collection navigationBarHeight="{{navigationBarHeight}}"></collection>
+<show-alert pageType="mine" source="个人中心" windowProp="showAlert"></show-alert>
+<authorize-Verify bind:cancel="cancel" bind:onNext="{{needNext}}" eventObj="{{eventObj}}" isShowToast="{{isShowToast}}" loginParams="{{loginParams}}" needNext="{{needNext}}"></authorize-Verify>
+<guide-follow bubbleProp="{{bubbleProp}}" source="xcx_bx"></guide-follow>

@@ -1,0 +1,12 @@
+<view class="teaching_wrap" wx:if="{{teachingList.length>0}}">
+    <view class="teaching_top">
+        <view class="teaching_title">{{moduleName}}</view>
+        <view bindtap="goToMoreUrl" class="teaching_more" data-moreurl="{{moduleUrl}}" data-point="{{introducePath==='home'?'':'PACX_W00001364'}}" data-text="{{moduleName}}" data-type="teaching" wx:if="{{moduleUrl!==''}}">更多<image class="teaching_more_img" lazyLoad="false" mode="aspectFit|aspectFill|widthFix" src="https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/discovery/Shape.png"></image>
+        </view>
+    </view>
+    <view class="teaching_scroll_container">
+        <scroll-view class="teaching_scroll" scrollX="true" style="height:426rpx;">
+            <k-card bind:goToDetails="goToDetailsByKun" cardItem="{{item}}" countColor="{{countColor}}" countSize="{{countSize}}" detailMode="{{detailMode}}" imageHeight="{{imageHeight}}" isShowAuthor="{{isShowAuthor}}" isShowDetail="{{isShowDetail}}" isShowIssue="{{isShowIssue}}" isShowTitle="{{isShowTitle}}" itemHeight="{{itemHeight}}" itemWidth="{{itemWidth}}" titleColor="{{titleColor}}" titleLine="{{titleLine}}" titleSize="{{titleSize}}" wx:if="{{index<5}}" wx:for="{{teachingList}}" wx:key="index"></k-card>
+        </scroll-view>
+    </view>
+</view>

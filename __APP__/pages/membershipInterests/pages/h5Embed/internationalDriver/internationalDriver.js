@@ -1,0 +1,2 @@
+// pages/membershipInterests/pages/h5Embed/internationalDriver/internationalDriver.js
+Page({data: {}})

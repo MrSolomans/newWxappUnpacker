@@ -1,0 +1,22 @@
+<view class="fb-container" style="bottom: {{bottom}}rpx" wx:if="{{show}}">
+    <view class="update-follow-box" wx:if="{{from==='1'}}">
+        <view class="update-fb-icon">
+            <image src="{{iconUrl}}"></image>
+        </view>
+        <view class="update-fb-text">
+            <view class="title">{{title}}</view>
+            <view class="tips">{{tips}}</view>
+        </view>
+        <view catch:tap="goFollow" class="update-fb-btn">{{button}}</view>
+    </view>
+    <view class="follow-box" wx:else>
+        <view class="fb-icon">
+            <image src="{{iconUrl}}"></image>
+        </view>
+        <view class="fb-text">{{title}}</view>
+        <view catch:tap="goFollow" class="fb-btn">{{button}}</view>
+        <view class="fb-close" wx:if="{{!hideClose}}">
+            <image catch:tap="closeFloatWindow" data-moduleType="1" src="{{closeUrl}}"></image>
+        </view>
+    </view>
+</view>

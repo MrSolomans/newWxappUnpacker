@@ -1,0 +1,28 @@
+<view style="position: fixed;">
+    <view class="mask" hidden="{{!modalType}}"></view>
+    <view class="spopup" hidden="{{modalType!=='share'}}">
+        <view class="content">
+            <view class="bg">
+                <image class="image" src="{{shareBg}}"></image>
+            </view>
+            <view class="title" wx:if="{{(sharePopText||shareText)&&needShareBgText}}">{{sharePopText||shareText}}</view>
+            <view class="buttons">
+                <view>
+                    <button catchtap="shareFriend" class="btn main {{isShareFriend?'':'btnWidth'}}" openType="share">分享好友</button>
+                </view>
+                <view catchtap="openPoster" class="btn vice" wx:if="{{isShareFriend}}">生成海报</view>
+            </view>
+        </view>
+        <view class="close">
+            <image catchtap="closePoster" class="image" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNjBweCIgaGVpZ2h0PSI2MHB4IiB2aWV3Qm94PSIwIDAgNjAgNjAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU0ICg3NjQ4MCkgLSBodHRwczovL3NrZXRjaGFwcC5jb20gLS0+CiAgICA8dGl0bGU+aWNvbi/lhbPpl60v57q/QDJ4PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9Imljb24v5YWz6ZetL+e6vyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZD0iTTMwLDYwIEMxMy40MzE0NTc1LDYwIDAsNDYuNTY4NTQyNSAwLDMwIEMwLDEzLjQzMTQ1NzUgMTMuNDMxNDU3NSwwIDMwLDAgQzQ2LjU2ODU0MjUsMCA2MCwxMy40MzE0NTc1IDYwLDMwIEM2MCw0Ni41Njg1NDI1IDQ2LjU2ODU0MjUsNjAgMzAsNjAgWiBNMzAsNTYgQzQ0LjM1OTQwMzUsNTYgNTYsNDQuMzU5NDAzNSA1NiwzMCBDNTYsMTUuNjQwNTk2NSA0NC4zNTk0MDM1LDQgMzAsNCBDMTUuNjQwNTk2NSw0IDQsMTUuNjQwNTk2NSA0LDMwIEM0LDQ0LjM1OTQwMzUgMTUuNjQwNTk2NSw1NiAzMCw1NiBaIE0zMC40ODUyODE0LDI3LjY1Njg1NDIgTDM3LjU1NjM0OTIsMjAuNTg1Nzg2NCBDMzguMzM3Mzk3OCwxOS44MDQ3Mzc5IDM5LjYwMzcyNzcsMTkuODA0NzM3OSA0MC4zODQ3NzYzLDIwLjU4NTc4NjQgQzQxLjE2NTgyNDksMjEuMzY2ODM1IDQxLjE2NTgyNDksMjIuNjMzMTY1IDQwLjM4NDc3NjMsMjMuNDE0MjEzNiBMMzMuMzEzNzA4NSwzMC40ODUyODE0IEw0MC4zODQ3NzYzLDM3LjU1NjM0OTIgQzQxLjE2NTgyNDksMzguMzM3Mzk3OCA0MS4xNjU4MjQ5LDM5LjYwMzcyNzcgNDAuMzg0Nzc2Myw0MC4zODQ3NzYzIEMzOS42MDM3Mjc3LDQxLjE2NTgyNDkgMzguMzM3Mzk3OCw0MS4xNjU4MjQ5IDM3LjU1NjM0OTIsNDAuMzg0Nzc2MyBMMzAuNDg1MjgxNCwzMy4zMTM3MDg1IEwyMy40MTQyMTM2LDQwLjM4NDc3NjMgQzIyLjYzMzE2NSw0MS4xNjU4MjQ5IDIxLjM2NjgzNSw0MS4xNjU4MjQ5IDIwLjU4NTc4NjQsNDAuMzg0Nzc2MyBDMTkuODA0NzM3OSwzOS42MDM3Mjc3IDE5LjgwNDczNzksMzguMzM3Mzk3OCAyMC41ODU3ODY0LDM3LjU1NjM0OTIgTDI3LjY1Njg1NDIsMzAuNDg1MjgxNCBMMjAuNTg1Nzg2NCwyMy40MTQyMTM2IEMxOS44MDQ3Mzc5LDIyLjYzMzE2NSAxOS44MDQ3Mzc5LDIxLjM2NjgzNSAyMC41ODU3ODY0LDIwLjU4NTc4NjQgQzIxLjM2NjgzNSwxOS44MDQ3Mzc5IDIyLjYzMzE2NSwxOS44MDQ3Mzc5IDIzLjQxNDIxMzYsMjAuNTg1Nzg2NCBMMzAuNDg1MjgxNCwyNy42NTY4NTQyIFoiIGlkPSLlvaLnirbnu5PlkIgiIGZpbGw9IiNGRkZGRkYiPjwvcGF0aD4KICAgIDwvZz4KPC9zdmc+"></image>
+        </view>
+    </view>
+    <view class="posterContainer" hidden="{{modalType!=='poster'}}">
+        <block wx:if="{{posterPreviewImg}}">
+            <image catchtap="closeSave" class="close" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNDZweCIgaGVpZ2h0PSI0NnB4IiB2aWV3Qm94PSIwIDAgNDYgNDYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU0ICg3NjQ4MCkgLSBodHRwczovL3NrZXRjaGFwcC5jb20gLS0+CiAgICA8dGl0bGU+5b2i54q2QDJ4PC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IuW+ruS/oeWwj+eoi+W6jyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9Imljb24v5YWz6ZetL+mdoiIgZmlsbD0iI0VGRjJGNCIgZmlsbC1ydWxlPSJub256ZXJvIj4KICAgICAgICAgICAgPHBhdGggZD0iTTIzLDAgQzEwLjI5NzQ1MDgsLTcuOTc5NzI3OTllLTE2IDEuNTk1OTQ1NmUtMTUsMTAuMjk3NDUwOCAwLDIzIEMtMS41OTU5NDU2ZS0xNSwzNS43MDI1NDkyIDEwLjI5NzQ1MDgsNDYgMjMsNDYgQzM1LjcwMjU0OTIsNDYgNDYsMzUuNzAyNTQ5MiA0NiwyMyBDNDYsMTAuMjk3NDUwOCAzNS43MDI1NDkyLDYuMzgzNzgyMzllLTE1IDIzLDAgWiBNMzMuMTc3NSwyOS4wOTUgQzM0LjMwNDg1MTIsMzAuMjIyMzUxMiAzNC4zMDQ4NTEyLDMyLjA1MDE0ODggMzMuMTc3NSwzMy4xNzc1IEMzMi4wNTAxNDg4LDM0LjMwNDg1MTIgMzAuMjIyMzUxMiwzNC4zMDQ4NTEyIDI5LjA5NSwzMy4xNzc1IEwyMywyNy4wNTM3NSBMMTYuOTA1LDMzLjE3NzUgQzE1Ljc3NzY0ODcsMzQuMzA0ODUxMiAxMy45NDk4NTEzLDM0LjMwNDg1MTIgMTIuODIyNSwzMy4xNzc1IEMxMS42OTUxNDg4LDMyLjA1MDE0ODcgMTEuNjk1MTQ4OCwzMC4yMjIzNTEzIDEyLjgyMjUsMjkuMDk1IEwxOC45NDYyNSwyMyBMMTIuODIyNSwxNi45MDUgQzExLjY5NTE0ODgsMTUuNzc3NjQ4OCAxMS42OTUxNDg4LDEzLjk0OTg1MTIgMTIuODIyNSwxMi44MjI1IEMxMy45NDk4NTEyLDExLjY5NTE0ODggMTUuNzc3NjQ4OCwxMS42OTUxNDg4IDE2LjkwNSwxMi44MjI1IEwyMywxOC45NDYyNSBMMjkuMDk1LDEyLjgyMjUgQzMwLjIyMjM1MTIsMTEuNjk1MTQ4OCAzMi4wNTAxNDg4LDExLjY5NTE0ODggMzMuMTc3NSwxMi44MjI1IEMzNC4zMDQ4NTEyLDEzLjk0OTg1MTIgMzQuMzA0ODUxMiwxNS43Nzc2NDg4IDMzLjE3NzUsMTYuOTA1IEwyNy4wNTM3NSwyMyBMMzMuMTc3NSwyOS4wOTUgWiIgaWQ9IuW9oueKtiI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+"></image>
+            <image class="poster_preview" src="{{posterPreviewImg}}"></image>
+            <view catchtap="savePoster" class="btn">保存图片到相册</view>
+        </block>
+    </view>
+</view>
+<canvas canvasId="posterCanvas" class="canvas"></canvas>

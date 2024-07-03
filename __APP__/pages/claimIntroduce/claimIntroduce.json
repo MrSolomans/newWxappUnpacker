@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "理赔介绍",
+    "navigationStyle": "custom",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#FFB94A",
+    "onReachBottomDistance": 200,
+    "navigationBarTextStyle": "black"
+}

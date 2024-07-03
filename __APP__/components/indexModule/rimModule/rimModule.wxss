@@ -1,0 +1,132 @@
+.one_line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rim_box {
+    background: #fff;
+    border-radius: 20rpx;
+    margin: 20rpx auto 0rpx;
+    padding-bottom: 28rpx;
+    padding-top: 30rpx;
+    width: 690rpx;
+}
+
+.wrap_top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0rpx 30rpx 28rpx;
+}
+
+.wrap_title {
+    color: #222;
+    font-family: PingFangSC-Semibold,PingFang SC;
+    font-size: 32rpx;
+    font-weight: 600;
+    line-height: 32rpx;
+}
+
+.wrap_more {
+    color: #50575d;
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-size: 28rpx;
+    font-weight: 400;
+    line-height: 28rpx;
+    margin-top: 2rpx;
+}
+
+.wrap_more_img {
+    height: 20rpx;
+    margin-left: 8rpx;
+    width: 12rpx;
+}
+
+.wrap_content {
+    margin-left: 30rpx;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.rim_content_box {
+    border-radius: 16rpx;
+    display: inline-block;
+    height: 174rpx;
+    margin-right: 10rpx;
+    overflow: hidden;
+    position: relative;
+    width: 290rpx;
+}
+
+.rim_content_title {
+    font-family: PingFangSC-Medium,PingFang SC;
+    font-size: 30rpx;
+    font-weight: 500;
+    line-height: 30rpx;
+    margin-left: 8rpx;
+    white-space: nowrap;
+    width: 150rpx;
+}
+
+.rim_content_text,.rim_content_title {
+    color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rim_content_text {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    font-size: 24rpx;
+    margin-left: 20rpx;
+    white-space: pre-line;
+    width: 250rpx;
+    word-break: break-all;
+}
+
+.rim_content_text,.rim_status {
+    font-family: PingFangSC-Regular,PingFang SC;
+    font-weight: 400;
+}
+
+.rim_status {
+    background: rgba(0,0,0,.2);
+    border-radius: 0rpx 16rpx 0rpx 30rpx;
+    color: #fff;
+    font-size: 22rpx;
+    height: 42rpx;
+    line-height: 42rpx;
+    right: 0rpx;
+    text-align: center;
+    width: 90rpx;
+}
+
+.rim_content,.rim_status {
+    position: absolute;
+    top: 0rpx;
+}
+
+.rim_content {
+    height: 100%;
+    left: 0rpx;
+    width: 100%;
+}
+
+.rim_content_imgStyle {
+    border: 1rpx solid #fff;
+    border-radius: 8rpx;
+    height: 38rpx;
+    width: 38rpx;
+}
+
+.rim_content_imgTitle {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 24rpx;
+    margin-left: 20rpx;
+    margin-top: 20rpx;
+}

@@ -1,0 +1,2 @@
+// pages/pingan/pages/right/right2.js
+Page({data: {}})

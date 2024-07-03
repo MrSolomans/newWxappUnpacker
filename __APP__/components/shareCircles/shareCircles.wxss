@@ -1,0 +1,42 @@
+.share-tip-box {
+    align-items: center;
+    background: rgba(34,34,34,.75);
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #fff;
+    display: flex;
+    font-family: PingFangSC-Medium;
+    font-size: 28rpx;
+    height: 100rpx;
+    justify-content: center;
+    margin-top: 15rpx;
+    padding: 0 20rpx;
+    position: fixed;
+    right: 30rpx;
+    width: 434rpx;
+    z-index: 99999;
+}
+
+.circle-icon {
+    height: 68rpx;
+    margin-right: 20rpx;
+    width: 68rpx;
+}
+
+.circle-icon,.close-icon {
+    flex: 0 0 auto;
+}
+
+.close-icon {
+    height: 24rpx;
+    margin-left: 24rpx;
+    width: 24rpx;
+}
+
+.arrow-icon {
+    height: 12rpx;
+    position: absolute;
+    right: 100rpx;
+    top: -12rpx;
+    width: 20rpx;
+}

@@ -46,7 +46,7 @@ function doConfig(configFile, cb) {
                     root = root.substring(1);
                 }
                 let newPages = [];
-                for (let page of subPackage.pages) {
+                for (let page of pages) {
                     let items = page.replace(root, '');
                     newPages.push(items);
                     let subIndex = pages.indexOf(root + items);

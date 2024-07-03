@@ -1,0 +1,97 @@
+<view class="hotspot_wrap" wx:if="{{hotSpotList.length>0}}">
+    <view class="question_top" style="border-bottom:0;">
+        <view class="teaching_title">{{moduleName}}</view>
+        <view bindtap="goToMoreUrl" class="teaching_more" data-moreurl="{{moduleUrl}}" data-point="{{introducePath==='home'?'':'PACX_W00001362'}}" data-text="{{moduleName}}" data-type="oldDriver" wx:if="{{moduleUrl!==''}}">更多<image class="teaching_more_img" lazyLoad="false" mode="aspectFit|aspectFill|widthFix" src="https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/discovery/Shape.png"></image>
+        </view>
+    </view>
+    <view class="hotspot_content" wx:if="{{loginStatus==='hczLogin'}}">
+        <swiper autoplay="{{hotSpotList.length>2&&loginStatus==='hczLogin'}}" bindchange="currentHandleIndex" circular="true" data-point="PACX_W00052143" duration="500" interval="3000" style="height:282rpx">
+            <swiper-item bindtap="goToHotSpotDetail" data-id="{{index}}" data-text="{{item.keyValue.vote_title}}" data-voteid="{{item.keyValue.voteId}}" wx:if="{{index<5}}" wx:for="{{hotSpotList}}" wx:key="index">
+                <image class="vote_btn_img_left" src="https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/home/voteLeft.png" wx:if="{{!item.keyValue.is_vote_recording}}"></image>
+                <image class="vote_btn_img_right" src="https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/home/voteRight.png" wx:if="{{!item.keyValue.is_vote_recording}}"></image>
+                <view class="hotspot_title">{{item.keyValue.text}}</view>
+                <view class="hotspot_comment">{{item.keyValue.vote_description}}</view>
+                <view class="vote_group" wx:if="{{!item.keyValue.is_vote_recording}}">
+                    <view catchtap="vote" class="vote_btn_left" data-button="{{item.keyValue.vote_left_btn}}" data-direction="0" data-title="{{item.keyValue.vote_title}}" data-voteid="{{item.keyValue.vote_id}}">
+                        <view class="vote_left_child"></view>
+                        <view class="vote_left_text">{{item.keyValue.vote_left_btn}}</view>
+                    </view>
+                    <view catchtap="vote" class="vote_btn_right" data-button="{{item.keyValue.vote_right_btn}}" data-direction="1" data-title="{{item.keyValue.vote_title}}" data-voteid="{{item.keyValue.vote_id}}">
+                        <view class="vote_right_child"></view>
+                        <view class="vote_right_text">{{item.keyValue.vote_right_btn}}</view>
+                    </view>
+                </view>
+                <view class="vote_result" wx:elif="{{item.keyValue.is_vote_recording}}">
+                    <view class="voted_result">
+                        <view class="voted_result_left">
+                            <view wx:if="{{item.keyValue.my_vote_direction===0}}">已选“{{item.keyValue.vote_left_btn}}”</view>
+                            <view wx:else>{{item.keyValue.vote_left_btn}}</view>
+                        </view>
+                        <view class="voted_result_right">
+                            <view wx:if="{{item.keyValue.my_vote_direction===1}}">已选“{{item.keyValue.vote_right_btn}}”</view>
+                            <view wx:else>{{item.keyValue.vote_right_btn}}</view>
+                        </view>
+                    </view>
+                    <view class="voted_num">
+                        <view>{{item.keyValue.vote_left_count}}票</view>
+                        <view class="voted_num_right">{{item.keyValue.vote_right_count}}票</view>
+                    </view>
+                    <view class="voted_progress">
+                        <view class="vote_progress_left" style="width:{{item.keyValue.left_width}}%">
+                            <view class="vote_progress_left_child" style="width:100%"></view>
+                        </view>
+                        <view class="vote_progress_right" style="width:{{100-item.keyValue.left_width}}%">
+                            <view class="vote_progress_right_child" style="width:100%"></view>
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+        </swiper>
+        <view class="swiper_dot" wx:if="{{loginStatus==='hczLogin'}}">
+            <k-swiper className="/pages/discovery/discovery" swiperIndex="{{currentIndex}}" swiperItemData="{{hotSpotList}}"></k-swiper>
+        </view>
+    </view>
+    <view bindtap="goToHotSpotDetail" class="hotspot_content" data-id="{{index}}" data-text="{{item.keyValue.vote_title}}" data-voteid="{{item.keyValue.voteId}}" style="margin-bottom: 30rpx;height: 200rpx;" wx:if="{{loginStatus==='noLogin'}}" wx:for="{{hotSpotList}}" wx:key="index">
+        <view>
+            <image class="vote_btn_img_left" src="https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/home/voteLeft.png" wx:if="{{!item.keyValue.is_vote_recording}}"></image>
+            <image class="vote_btn_img_right" src="https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/home/voteRight.png" wx:if="{{!item.keyValue.is_vote_recording}}"></image>
+            <view class="hotspot_title">{{item.keyValue.text}}</view>
+            <view class="hotspot_comment">{{item.keyValue.vote_description}}</view>
+            <view class="vote_group" wx:if="{{!item.keyValue.is_vote_recording}}">
+                <view catchtap="vote" class="vote_btn_left" data-button="{{item.keyValue.vote_left_btn}}" data-direction="0" data-title="{{item.keyValue.vote_title}}" data-voteid="{{item.keyValue.vote_id}}">
+                    <view class="vote_left_child"></view>
+                    <view class="vote_left_text">{{item.keyValue.vote_left_btn}}</view>
+                </view>
+                <view catchtap="vote" class="vote_btn_right" data-button="{{item.keyValue.vote_right_btn}}" data-direction="1" data-title="{{item.keyValue.vote_title}}" data-voteid="{{item.keyValue.vote_id}}">
+                    <view class="vote_right_child"></view>
+                    <view class="vote_right_text">{{item.keyValue.vote_right_btn}}</view>
+                </view>
+            </view>
+            <view class="vote_result" wx:elif="{{item.keyValue.is_vote_recording}}">
+                <view class="voted_result">
+                    <view class="voted_result_left">
+                        <view wx:if="{{item.keyValue.my_vote_direction===0}}">已选“{{item.keyValue.vote_left_btn}}”</view>
+                        <view wx:else>{{item.keyValue.vote_left_btn}}</view>
+                    </view>
+                    <view class="voted_result_right">
+                        <view wx:if="{{item.keyValue.my_vote_direction===1}}">已选“{{item.keyValue.vote_right_btn}}”</view>
+                        <view wx:else>{{item.keyValue.vote_right_btn}}</view>
+                    </view>
+                </view>
+                <view class="voted_num">
+                    <view>{{item.keyValue.vote_left_count}}票</view>
+                    <view class="voted_num_right">{{item.keyValue.vote_right_count}}票</view>
+                </view>
+                <view class="voted_progress">
+                    <view class="vote_progress_left" style="width:{{item.keyValue.left_width}}%">
+                        <view class="vote_progress_left_child" style="width:100%"></view>
+                    </view>
+                    <view class="vote_progress_right" style="width:{{100-item.keyValue.left_width}}%">
+                        <view class="vote_progress_right_child" style="width:100%"></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<new-authorize bind:cancel="cancel" bind:onNext="{{needNext}}" eventObj="{{eventObj}}" isShowToast="{{isShowToast}}" isShowTransparentMask="{{isShowTransparentMask}}" needNext="{{needNext}}"></new-authorize>

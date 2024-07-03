@@ -1,0 +1,32 @@
+<template name="celk-right-main">
+    <view class="right-section k-class-right k-right-class">
+        <slot name="right-section"></slot>
+        <k-tag bgColor="{{tagColor}}" kClass="celk-tag" shape="{{tagShape}}" size="mini" wx:if="{{tagContent&&tagPosition==='right'&&!tagPlain}}">{{tagContent}}</k-tag>
+        <k-tag fontColor="{{tagColor}}" kClass="celk-tag" plain="{{tagPlain}}" shape="{{tagShape}}" size="mini" wx:if="{{tagContent&&tagPosition==='right'&&tagPlain}}">{{tagContent}}</k-tag>
+        <view class="k-text {{desc?'right-self':''}}" wx:if="{{rightDesc}}">{{rightDesc}}</view>
+        <k-icon class="right-icon" color="#ccc" name="icon-a-cx-base-arrow-right2x" size="48" wx:if="{{isLink}}"></k-icon>
+    </view>
+</template>
+<template name="celk-left-main">
+    <view class="left-section">
+        <image class="k-image" src="{{image}}" wx:if="{{image}}"></image>
+        <k-icon color="{{iconColor}}" kIconClass="k-icon-class" name="{{icon}}" size="{{iconSize}}" wx:elif="{{icon}}"></k-icon>
+        <view class="k-text">
+            <view class="k-content k-class-content k-content-class">{{title}}</view>
+            <view class="k-desc k-class-desc k-desc-class" wx:if="{{desc}}">{{desc}}</view>
+        </view>
+        <k-tag bgColor="{{tagColor}}" kClass="celk-tag" shape="{{tagShape}}" size="mini" wx:if="{{tagContent&&tagPosition==='left'&&!tagPlain}}">{{tagContent}}</k-tag>
+        <k-tag fontColor="{{tagColor}}" kClass="celk-tag" plain="{{tagPlain}}" shape="{{tagShape}}" size="mini" wx:elif="{{tagContent&&tagPosition==='left'&&tagPlain}}">{{tagContent}}</k-tag>
+        <slot name="left-section"></slot>
+    </view>
+</template>
+<view bind:tap="tapcell" class="k-list k-class" data-link-type="{{linkType}}" data-url="{{url}}" hoverClass="{{isHover?'k-list-hover':''}}" hoverStartTime="20" hoverStayTime="50" style="{{gap?'padding:0 '+gap+'rpx;':''}} {{leftGap?'padding-left:'+leftGap+'rpx':''}} {{rightGap?'padding-right:'+rightGap+'rpx':''}}">
+    <k-badge dot="{{dotBadge}}" maxCount="{{badgeMaxCount}}" numberType="{{badgeCountType}}" style="{{badgeCount>0?'margin-right:100rpx;':''}}" value="{{badgeCount}}" wx:if="{{(badgeCount>0||dotBadge)&&badgePosition==='left'}}">
+        <template is="celk-left-main" data="{{image:image,icon:icon,title:title,desc:desc,tagContent:tagContent,tagPosition:tagPosition,tagColor:tagColor,tagShape:tagShape,tagPlain:tagPlain,iconSize:iconSize,iconColor:iconColor}}"></template>
+    </k-badge>
+    <template is="celk-left-main" data="{{image:image,icon:icon,title:title,desc:desc,tagContent:tagContent,tagPosition:tagPosition,tagColor:tagColor,tagShape:tagShape,tagPlain:tagPlain,iconSize:iconSize,iconColor:iconColor}}" wx:else></template>
+    <k-badge dot="{{dotBadge}}" kClass="badge-right" maxCount="{{badgeMaxCount}}" numberType="{{badgeCountType}}" value="{{badgeCount}}" wx:if="{{(badgeCount>0||dotBadge)&&badgePosition==='right'}}">
+        <template is="celk-right-main" data="{{rightDesc:rightDesc,tagContent:tagContent,tagPosition:tagPosition,isLink:isLink,tagColor:tagColor,tagShape:tagShape,tagPlain:tagPlain}}"></template>
+    </k-badge>
+    <template is="celk-right-main" data="{{rightDesc:rightDesc,tagContent:tagContent,tagPosition:tagPosition,isLink:isLink,tagColor:tagColor,tagShape:tagShape,tagPlain:tagPlain,desc:desc}}" wx:else></template>
+</view>

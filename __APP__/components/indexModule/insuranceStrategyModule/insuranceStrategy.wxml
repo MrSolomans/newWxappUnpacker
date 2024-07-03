@@ -1,0 +1,24 @@
+<view class="insurance_strategy" wx:if="{{insuranceStrategyList.length>0}}">
+    <view class="wrap_top">
+        <view class="wrap_title">{{moduleName}}</view>
+        <view bindtap="goToMoreUrl" class="wrap_more" data-moreurl="{{moduleUrl}}" data-point="{{introducePath==='home'?'PACX_W00069522':'PACX_W00052140'}}" data-text="{{moduleName}}" data-type="insurance" wx:if="{{moduleUrl!==''}}">更多<image class="wrap_more_img" lazyLoad="false" mode="aspectFit|aspectFill|widthFix" src="https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/discovery/Shape.png"></image>
+        </view>
+    </view>
+    <view class="wrap_content">
+        <scroll-view bindscroll="moduleTouchStart" class="wrap_scroll" data-point="PACX_W00052142" data-type="insurance" scrollX="true">
+            <view bindtap="goToDetails" class="insurance_strategy_content" data-id="{{item.topicId}}" data-point="PACX_W00052148" data-text="{{item.title}}" data-type="insurance" wx:for="{{insuranceStrategyList}}" wx:for-index="i" wx:key="index">
+                <image class="insurance_strategy_img" mode="aspectFill" src="{{item.icon}}"></image>
+                <view class="insurance_strategy_BgColor"></view>
+                <view class="insurance_strategy_box">
+                    <view class="insurance_strategy_title">#{{item.title}}#</view>
+                    <view class="insurance_strategy_numBox">
+                        <view class="insurance_strategy_numBox_img" wx:if="{{item.user}}">
+                            <image binderror="errorImg" class="insurance_strategy_numBox_userImg" data-index="{{index}}" data-one="{{i}}" mode="aspectFit|aspectFill|widthFix" src="{{item.avatar}}" wx:if="{{item.avatar}}" wx:for="{{item.user}}" wx:key="index"></image>
+                        </view>
+                        <view class="insurance_strategy_numBox_text" wx:if="{{item.user}}">{{item.peopleNum}}人参与</view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

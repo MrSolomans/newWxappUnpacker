@@ -1,0 +1,21 @@
+{
+    "usingComponents": {
+        "show-alert": "/components/showAlert/showAlert",
+        "collect": "/components/collect/collect",
+        "collection": "/components/collection/collection",
+        "k-float": "/miniprogram_npm/@kun/kun-mp-ui-hcz/floatbox/index",
+        "member-alert": "/components/memberAlert/memberAlert",
+        "accredit-window": "/components/accreditWindow/accreditWindow",
+        "k-swiper": "/miniprogram_npm/@kun/kun-mp-ui-5/swipe/index",
+        "k-floating-layer": "/miniprogram_npm/@kun/kun-mp-ui-5/floatingLayer/index",
+        "custom-navbar": "/components/customNavbar/customNavbar",
+        "guide-follow": "/components/guideFollow/guideFollow",
+        "bottom-bubble": "/components/bottomBubble/bottomBubble",
+        "new-authorize": "/components/authorizeAndVerify/authorizeAndVerify",
+        "share-circles": "/components/shareCircles/shareCircles",
+        "k-button": "/miniprogram_npm/@kun/kun-mp-ui-5/button/index",
+        "k-toast": "/miniprogram_npm/@kun/kun-mp-ui-5/toast/index"
+    },
+    "navigationBarTitleText": "首页",
+    "disableScroll": true
+}

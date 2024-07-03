@@ -1,0 +1,190 @@
+.authorize-comp {
+    font-family: PingFangSC;
+    font-size: 32rpx;
+    font-weight: 400;
+    z-index: 11111;
+}
+
+.authorize-comp,.mask-body,.mask-shadow {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.mask-shadow {
+    background-color: rgba(0,0,0,.55);
+}
+
+.mask-body,.phoneToastBox {
+    position: absolute;
+}
+
+.phoneToastBox {
+    background: #fff;
+    border-radius: 16rpx 16rpx 0 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.close-top {
+    align-items: center;
+    display: flex;
+    height: 88rpx;
+    justify-content: flex-end;
+    width: 98%;
+}
+
+.close-top .icon {
+    background: url(https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/login/close@1.5x.png)no-repeat;
+    background-size: 100% 100%;
+    height: 32rpx;
+    width: 32rpx;
+}
+
+.logo-anan {
+    display: flex;
+    height: 156rpx;
+    justify-content: center;
+    margin-top: 20rpx;
+    width: 100%;
+}
+
+.logo-anan .icon {
+    background: url(https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/login/logo-anan@1.5x.png)no-repeat;
+    background-size: 100% 100%;
+    height: 156rpx;
+    width: 156rpx;
+}
+
+.btn-box,.btn-box-verify {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 204rpx;
+    justify-content: space-between;
+    padding-top: 180rpx;
+    width: 100%;
+}
+
+.btn-box-verify {
+    height: 80rpx;
+    padding-top: 60rpx;
+}
+
+.phoneVerifyBtn {
+    margin-top: 24rpx;
+}
+
+.text-box {
+    color: #666;
+    display: flex;
+    font-size: 24rpx;
+    font-weight: 400;
+    justify-content: center;
+    line-height: 40rpx;
+    margin: 0 auto 100rpx;
+    padding-top: 52rpx;
+    width: 630rpx;
+}
+
+.text-box .checkbox {
+    height: 48rpx;
+    width: 48rpx;
+}
+
+.text-box .al-treaty {
+    color: #ff6300;
+}
+
+.verify-box {
+    margin-top: 50rpx;
+    width: 100%;
+}
+
+.verify-box .title {
+    color: #222;
+    font-family: PingFangSC-Medium;
+    font-size: 50rpx;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 48px;
+    text-align: center;
+    width: 100%;
+}
+
+.verify-box .form {
+    align-items: center;
+    flex-direction: column;
+    margin-top: 69rpx;
+}
+
+.phone-input,.verify-box .form,.verify-input {
+    display: flex;
+    justify-content: space-between;
+}
+
+.phone-input,.verify-input {
+    border-bottom: 1rpx solid #e5e5e5;
+    color: #222;
+    font-size: 34rpx;
+    font-weight: 400;
+    height: 64rpx;
+    letter-spacing: 0;
+    line-height: 40rpx;
+    position: relative;
+    width: 630rpx;
+}
+
+.verify-input input {
+    width: 80%;
+}
+
+.phone-input {
+    margin-bottom: 80rpx;
+}
+
+.phone-input .send-verify {
+    display: flex;
+    font-size: 28rpx;
+    height: 40rpx;
+    justify-content: flex-end;
+    width: 160rpx;
+}
+
+.phone-input .ipt-text {
+    border-left: 1px solid #e5e5e5;
+    color: #222;
+    display: inline-block;
+    text-align: right;
+    width: 160rpx;
+}
+
+.phone-input .ipt-text .ipt-text-second {
+    color: #ff6300;
+    display: inline-block;
+    width: 30rpx;
+}
+
+.clear-icon {
+    background: url(https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/login/clear@1.5x.png)no-repeat;
+    background-size: 100% 100%;
+    height: 40rpx;
+    position: absolute;
+    right: 0;
+    width: 40rpx;
+}
+
+.phone-input .clear-icon {
+    right: 180rpx;
+}
+
+.verir-res-txt {
+    color: #ff3526;
+    font-size: 28rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    margin: 0 auto;
+    width: 630rpx;
+}

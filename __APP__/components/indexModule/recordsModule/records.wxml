@@ -1,0 +1,21 @@
+<view class="records_wrap" wx:if="{{recordsList.length>0}}">
+    <view class="teaching_top">
+        <view class="teaching_title">{{moduleName}}</view>
+        <view bindtap="goToMoreUrl" class="teaching_more" data-moreurl="{{moduleUrl}}" data-point="{{introducePath==='home'?'':'PACX_W00001363'}}" data-text="{{moduleName}}" data-type="records" wx:if="{{moduleUrl!==''}}">更多<image class="teaching_more_img" lazyLoad="false" mode="aspectFit|aspectFill|widthFix" src="https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/discovery/Shape.png"></image>
+        </view>
+    </view>
+    <view class="records_content">
+        <scroll-view class="records_scroll" scrollX="true">
+            <view bindtap="goToDetails" class="records_item scroll-view-item" data-id="{{item.keyValue.id}}" data-point="{{introducePath==='home'?'':'PACX_W00052152'}}" data-text="{{item.keyValue.text}}" data-type="records" data-url="{{item.keyValue.url}}" wx:if="{{index<5}}" wx:for="{{recordsList}}" wx:key="index">
+                <image class="records_img" src="{{item.keyValue.icon}}"></image>
+                <view class="records_msg">
+                    <view class="records_text">{{item.keyValue.text}}</view>
+                    <view class="records_resume">{{item.keyValue.caseTag}}</view>
+                    <view class="records_bottom">
+                        <view class="records_tag">{{item.keyValue.caseType}}</view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

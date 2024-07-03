@@ -1,0 +1,6 @@
+<view animation="{{animationData}}" class="riskWarp" hidden="{{isShowToast}}">
+    <view class="riskMask">
+        <image class="maskIcon" src="https://hcz-static.pingan.com.cn/cps/hcz-miniprogram/images/appInvitation/{{toastIcon}}.png" wx:if="{{toastIcon}}"></image>
+        <text class="maskTxt">{{content}}</text>
+    </view>
+</view>

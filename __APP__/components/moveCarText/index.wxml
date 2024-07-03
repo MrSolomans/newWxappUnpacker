@@ -1,0 +1,1 @@
+<view class="bottom-text {{isAbsolute?'position':''}} {{isPadding?'padding':''}}" style="color:{{textColor}}">本服务由金融壹账通提供</view>

@@ -1,0 +1,83 @@
+.k-list {
+    align-items: center;
+    border-bottom: 1rpx solid #e5e5e5;
+    box-sizing: border-box;
+    color: #222;
+    display: flex;
+    font-size: 32rpx;
+    justify-content: space-between;
+    margin-left: 24rpx;
+    min-height: 100rpx;
+    padding: 28rpx 0;
+}
+
+.k-list-hover {
+    opacity: .8;
+}
+
+.k-list .left-section {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.k-list .left-section .k-icon {
+    margin-right: 20rpx;
+}
+
+.k-list .left-section .k-desc {
+    color: #a5a5a5;
+    font-size: 28rpx;
+}
+
+.k-list .left-section .cell-tag {
+    margin-left: 20rpx;
+}
+
+.k-list .left-section .k-image {
+    height: 44rpx;
+    margin-right: 20rpx;
+    width: 44rpx;
+}
+
+.k-list .right-self {
+    display: inline-block;
+    height: 84rpx;
+    line-height: normal;
+    vertical-align: top;
+}
+
+.k-list .right-section {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.2;
+}
+
+.k-list .right-section .k-text {
+    color: #ccc;
+    letter-spacing: 0;
+    margin-right: 24rpx;
+    text-align: right;
+}
+
+.k-list .right-icon,.k-list .right-section .cell-tag {
+    margin-right: 24rpx;
+}
+
+.k-list .badge-right {
+    border-radius: 28rpx;
+    right: 40rpx;
+    top: 10rpx;
+    transform: translate(-100%,2rpx);
+}
+
+.k-list .k-icon-class {
+    margin-right: 16rpx;
+}
+
+.k-list .k-image {
+    height: 80rpx;
+    margin-right: 20rpx;
+    width: 80rpx;
+}

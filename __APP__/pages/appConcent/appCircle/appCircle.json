@@ -1,0 +1,8 @@
+{
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColorTop": "#fff",
+    "backgroundColor": "#fff",
+    "onReachBottomDistance": 200
+}

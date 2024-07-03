@@ -1,0 +1,69 @@
+.qiwei_area {
+    align-items: center;
+    background: #fff;
+    border-radius: 20rpx;
+    box-sizing: border-box;
+    display: flex;
+    height: 184rpx;
+    justify-content: space-between;
+    margin: 20rpx auto 0;
+    padding: 24rpx;
+    vertical-align: middle;
+    width: 690rpx;
+}
+
+.qiwei_title {
+    color: #222;
+    font-family: PingFangSC-Regular;
+    font-size: 32rpx;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 32rpx;
+    margin-bottom: 20rpx;
+}
+
+.salesman_avatar image {
+    border-radius: 50%;
+    height: 80rpx;
+    width: 80rpx;
+}
+
+.salesman_avatar {
+    margin-right: 20rpx;
+}
+
+.salesman_basic_info {
+    display: flex;
+    flex-wrap: nowrap;
+    font-weight: 500;
+    height: 80rpx;
+    margin-top: 15rpx;
+}
+
+.salesman_company {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.salesman_company .salesman_name {
+    color: #222;
+    font-family: PingFangSC-Medium;
+    font-size: 28rpx;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 28rpx;
+    margin-bottom: 10rpx;
+}
+
+.salesman_company_name {
+    color: #a5a5a5;
+    font-family: PingFangSC-Regular;
+    font-size: 24rpx;
+    line-height: 30rpx;
+    padding-right: 10rpx;
+}
+
+.goto_qiwei {
+    margin-top: 50rpx;
+}

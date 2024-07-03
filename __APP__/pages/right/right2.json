@@ -1,0 +1,23 @@
+{
+    "navigationBarTitleText": "我的",
+    "navigationBarBackgroundColor": "#FF8727",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F6F7F8",
+    "backgroundColorTop": "#F6F7F8",
+    "backgroundColorBottom": "#F6F7F8",
+    "usingComponents": {
+        "show-alert": "/components/showAlert/showAlert",
+        "collection": "/components/collection/collection",
+        "authorize-Verify": "/components/authorizeAndVerify/authorizeAndVerify",
+        "car-renew-insurance": "/components/carRenewInsurance/carRenewInsurance",
+        "k-float": "/miniprogram_npm/@kun/kun-mp-ui-hcz/floatbox/index",
+        "qiwei-rocket": "/components/qiweiRocket/qiweiRocket",
+        "custom-navbar": "/components/customNavbar/customNavbar",
+        "guide-follow": "/components/guideFollow/guideFollow",
+        "bottom-bubble": "/components/bottomBubble/bottomBubble",
+        "new-authorize": "/components/authorizeAndVerify/authorizeAndVerify",
+        "share-circles": "/components/shareCircles/shareCircles",
+        "k-button": "/miniprogram_npm/@kun/kun-mp-ui-5/button/index",
+        "k-toast": "/miniprogram_npm/@kun/kun-mp-ui-5/toast/index"
+    }
+}

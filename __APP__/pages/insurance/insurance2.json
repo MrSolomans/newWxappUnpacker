@@ -1,0 +1,23 @@
+{
+    "navigationBarTitleText": "保险",
+    "navigationBarBackgroundColor": "#FF7E0A",
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom",
+    "backgroundColor": "#FF7E0A",
+    "backgroundColorTop": "#FF7E0A",
+    "backgroundColorBottom": "#f6f7f8",
+    "usingComponents": {
+        "show-alert": "/components/showAlert/showAlert",
+        "collection": "/components/collection/collection",
+        "k-float": "/miniprogram_npm/@kun/kun-mp-ui-hcz/floatbox/index",
+        "k-custom-navbar": "/miniprogram_npm/@kun/kun-mp-ui-5/custom-navigator/index",
+        "monthly-report": "/components/monthlyReport/monthlyReport",
+        "custom-navbar": "/components/customNavbar/customNavbar",
+        "guide-follow": "/components/guideFollow/guideFollow",
+        "bottom-bubble": "/components/bottomBubble/bottomBubble",
+        "new-authorize": "/components/authorizeAndVerify/authorizeAndVerify",
+        "share-circles": "/components/shareCircles/shareCircles",
+        "k-button": "/miniprogram_npm/@kun/kun-mp-ui-5/button/index",
+        "k-toast": "/miniprogram_npm/@kun/kun-mp-ui-5/toast/index"
+    }
+}

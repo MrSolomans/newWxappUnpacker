@@ -1,0 +1,2 @@
+// pages/carManager/pages/appConcent/appVote/appVote.js
+Page({data: {}})

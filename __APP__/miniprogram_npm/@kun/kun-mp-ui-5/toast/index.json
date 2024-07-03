@@ -1,0 +1,14 @@
+{
+    "component": true,
+    "usingComponents": {
+        "k-icon": "../icon/index",
+        "k-components-detect": "../components-detect/index",
+        "bottom-bubble": "/components/bottomBubble/bottomBubble",
+        "custom-navbar": "/components/customNavbar/customNavbar",
+        "guide-follow": "/components/guideFollow/guideFollow",
+        "k-button": "/miniprogram_npm/@kun/kun-mp-ui-5/button/index",
+        "k-toast": "/miniprogram_npm/@kun/kun-mp-ui-5/toast/index",
+        "new-authorize": "/components/authorizeAndVerify/authorizeAndVerify",
+        "share-circles": "/components/shareCircles/shareCircles"
+    }
+}

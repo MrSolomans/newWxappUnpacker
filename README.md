@@ -27,10 +27,11 @@ npm install js-beautify
 
 -s 参数可为相对路径或绝对路径, 推荐使用绝对路径, 因为相对路径的起点不是当前目录 而是子包解包后的目录
 
-├── testpkg
-│   ├── sub-1-xxx.wxapkg #被解析子包
-│   └── sub-1-xxx               #相对路径的起点
-│       ├── app-service.js
-│   ├── master-xxx.wxapkg
-│   └── master-xxx             # ../master-xxx 就是这个目录
-│       ├── app.json
+
+    ├── testpkg
+    │   ├── sub-1-xxx.wxapkg #被解析子包
+    │   └── sub-1-xxx               #相对路径的起点
+    │       ├── app-service.js
+    │   ├── master-xxx.wxapkg
+    │   └── master-xxx             # ../master-xxx 就是这个目录
+    │       ├── app.json
